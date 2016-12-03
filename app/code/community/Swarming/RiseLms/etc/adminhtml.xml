@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+    <acl>
+        <resources>
+            <admin>
+                <children>
+                    <system>
+                        <children>
+                            <config>
+                                <children>
+                                    <riselms_general>
+                                        <title>Rise LMS General</title>
+                                    </riselms_general>
+                                    <riselms_singlesignon>
+                                        <title>Rise LMS Single Sign On</title>
+                                    </riselms_singlesignon>
+                                </children>
+                            </config>
+                        </children>
+                    </system>
+                </children>
+            </admin>
+        </resources>
+    </acl>
+</config>
