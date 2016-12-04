@@ -68,7 +68,7 @@ $installer->addAttribute(Mage_Catalog_Model_Product::ENTITY, 'rise_course_uuid',
     'user_defined' => 1,
     'note' => 'Unique Identifier for RiseLMS specific courses',
     'global' => 1,
-    'visible' => 0,
+    'visible' => 1,
 ));
 
 /* @var $installer Mage_Sales_Model_Resource_Setup */
