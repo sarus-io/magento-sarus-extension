@@ -2,7 +2,7 @@
 <config>
     <modules>
         <Swarming_RiseLms>
-            <version>0.1.2</version>
+            <version>0.1.3</version>
         </Swarming_RiseLms>
     </modules>
     <global>
@@ -98,6 +98,16 @@
                     </swarming_riselms>
                 </observers>
             </sales_order_place_after>
+            <sales_order_creditmemo_refund>
+                <observers>
+                    <swarming_riselms>
+                        <type>singleton</type>
+                        <class>swarming_riselms/observer</class>
+                        <method>creditmemoSaveAfter</method>
+                    </swarming_riselms>
+                </observers>
+            </sales_order_creditmemo_refund>
+
         </events>
     </global>
     <frontend>

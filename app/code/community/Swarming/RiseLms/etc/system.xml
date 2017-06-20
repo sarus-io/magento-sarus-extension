@@ -85,6 +85,14 @@
                             <show_in_website>1</show_in_website>
                             <show_in_store>1</show_in_store>
                         </rise_api_purchase_endpoint>
+                        <rise_api_creditmemo_endpoint>
+                            <label>Course Deactivation Endpoint</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>9</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </rise_api_creditmemo_endpoint>
                         <rise_api_courses_endpoint>
                             <label>My Courses Endpoint</label>
                             <frontend_type>text</frontend_type>

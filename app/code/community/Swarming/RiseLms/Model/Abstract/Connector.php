@@ -247,4 +247,75 @@ abstract class Swarming_RiseLms_Model_Abstract_Connector extends Mage_Core_Model
             return array('isSuccess' => false, 'message' => $e);
         }
     }
+
+
+    protected function put()
+    {
+        try {
+            if (count($this->_params) > Swarming_RiseLms_Model_Abstract_Connector::MIN_HEADER_LIMIT_ALLOWED)
+            {
+                $this->_client->getHttpClient()->setHeaders($this->_params);
+            }
+
+            if (!$this->_endpointPath)
+            {
+                Mage::log('Configuration Error: No endpoint path has been configured. Please visit the RiseLMS system configurations.', null, 'riselms_api_status.log');
+                Mage::throwException('Error: API Endpoint not configured.');
+            }
+
+            /** restPost accepts endpoint & postData arguments */
+            $result = $this->_client->restPut($this->_endpointPath, $this->_data);
+
+            Mage::log(' ' . print_r($this->_data,true), null, 'riselms_api_status.log', true);
+            Mage::log('Status: ' . $result->getStatus() . ' - Message Body: ' . $result->getBody(), null, 'riselms_api_status.log', true);
+            Mage::log('Endpoint: ' . $this->_endpointPath, null, 'riselms_api_status.log', true);
+            Mage::log('Data: ' . $this->_data, null, 'riselms_api_status.log', true);
+            Mage::log(' ' . $this->_data, null, 'riselms_api_status.log', true);
+
+            if ($result->getStatus() == 200)
+            {
+                // If status successful return response body
+                // Let the extending classes deal with how to handle it
+                if ($result = json_decode($result->getBody(), true))
+                {
+                    $result['isSuccess'] = true;
+                }else {
+                    $result['isSuccess'] = false;
+                }
+
+                return $result;
+
+            } else {
+                /**
+                 * When status is not 200, notify administrator to investigate the response body
+                 */
+                $notification = Mage::getModel('swarming_riselms/adminNotification');
+                $notification->sendNotification(
+                    'Connection to RiseLMS could not be established',
+                    array(
+                        'User Email' => $this->_data['email'],
+                        'Endpoint' => $this->_endpointPath,
+                        'API Request Put Failed' => $result->getStatus() . ' has been returned',
+                        'Response' => array(
+                            'Response Headers: ' => $result->getheaders(),
+                            'Response Body: ' => $result->getBody(),
+                            'Response Message: ' => $result->getMessage()
+                        ),
+                    )
+                );
+                Mage::throwException('API Put Request Failed: ' . $result->getStatus() . ' returned.');
+            }
+        } catch (Exception $e) {
+            Mage::logException($e);
+
+            return array('isSuccess' => false, 'message' => $e);
+        }
+    }
+
+
+
+
+
+
+
 }

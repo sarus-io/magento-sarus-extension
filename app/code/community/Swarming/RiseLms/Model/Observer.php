@@ -39,6 +39,7 @@ class Swarming_RiseLms_Model_Observer extends Varien_Event_Observer
         {
             //Add required data to request body
             $customerAddress = [
+                'identity_provider_id' => $order->getCustomerId(),
                 'email' => $order->getCustomerEmail(),
                 'first_name' => $billingAddress->getFirstname(),
                 'last_name' => $billingAddress->getLastname(),
@@ -64,6 +65,55 @@ class Swarming_RiseLms_Model_Observer extends Varien_Event_Observer
             }
         }
     }
+    /**
+     * Refund process
+     * used for event: sales_order_creditmemo_save_after
+     *
+     * @param Varien_Event_Observer $observer
+     * @return Swarming_Riselms_Model_Observer
+     */
+    public function creditmemoSaveAfter(Varien_Event_Observer $observer)
+    {
+        $creditmemo = $observer->getEvent()->getCreditmemo();
+        $order = $creditmemo->getOrder();
+
+        /**@var Mage_Sales_Model_Entity_Order_Item_Collection*/
+        $items          = $order->getAllItems();
+        $productIds     = array();
+        $riseOrderModel = Mage::getModel('swarming_riselms/creditmemo');
+
+        /** @var Mage_Sales_Model_Order_Item */
+        foreach ($items as $item)
+        {
+            if ($item->getProductType() != Mage_Catalog_Model_Product_Type::TYPE_BUNDLE) {
+                $productIds[] = $riseOrderModel->isRiseLmsProduct($item);
+            }
+        }
+
+        //Callback to remove empty indexes from the array
+        $filteredProductIds = array_filter($productIds, function($var){return !is_null($var);} );
+
+        if ($filteredProductIds)
+        {
+
+            //Add required data to request body
+            $customerEmail = $order->getCustomerEmail();
+
+            $riseOrderModel->addCourseRestrictionData('email' , $customerEmail);
+            $riseOrderModel->addCourseRestrictionData('product_ids', $filteredProductIds);
+
+            /**
+             * put email and product_ids[]
+             */
+            $result = $riseOrderModel->removeAccessToCoursePut();
+
+            if (!$result)
+            {
+                Mage::log('Order put failed at observer.php, check submission queue table' . $result);
+            }
+        }
+    }
+
 
     public function syncSubmissionQueue()
     {

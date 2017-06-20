@@ -14,7 +14,6 @@ if ($installer->getConnection()->isTableExists($installer->getTable('swarming_ri
     $installer->getConnection()->dropTable($installer->getTable('swarming_riselms/riselms_submissionqueue'));
 }
 
-
 /**
  * Create Resubmission log table and columns
  */
@@ -56,19 +55,18 @@ if ($installer->getAttribute(Mage_Catalog_Model_Product::ENTITY, 'rise_course_uu
     $installer->removeAttribute(Mage_Catalog_Model_Product::ENTITY, 'rise_course_uuid');
 }
 
-
 /**
  * Create rise_course_uuid attribute on the product
  */
 $installer->addAttribute(Mage_Catalog_Model_Product::ENTITY, 'rise_course_uuid', array(
-    'type' => Varien_Db_Ddl_Table::TYPE_VARCHAR,
+    'type' => 'varchar',
     'input' => 'text',
     'label' => 'Rise Course UUID',
     'required' => 0,
     'user_defined' => 1,
     'note' => 'Unique Identifier for RiseLMS specific courses',
     'global' => 1,
-    'visible' => 1,
+    'visible' => 0,
 ));
 
 /* @var $installer Mage_Sales_Model_Resource_Setup */
@@ -77,26 +75,25 @@ $installer = new Mage_Sales_Model_Resource_Setup('core_setup');
 /**
  * Create rise_course_uuid on the sales_flat_quote_item table
  */
-//if (!$installer->getAttribute('quote_item', 'rise_course_uuid')) {
-    //die();
+if (!$installer->getAttribute('quote_item', 'rise_course_uuid')) {
     $installer->addAttribute('quote_item', 'rise_course_uuid', array(
-        'type' => Varien_Db_Ddl_Table::TYPE_VARCHAR,
+        'type' => 'varchar',
         'required' => 0,
         'comment' => 'Unique Identifier for RiseLMS specific courses',
         'grid' => false,
     ));
-//}
+}
 
 /**
  * Create rise_course_uuid on the sales_flat_order_item table
  */
-//if (!$installer->getAttribute('order_item', 'rise_course_uuid')) {
+if (!$installer->getAttribute('order_item', 'rise_course_uuid')) {
     $installer->addAttribute('order_item', 'rise_course_uuid', array(
-        'type' => Varien_Db_Ddl_Table::TYPE_VARCHAR,
+        'type' => 'varchar',
         'required' => 0,
         'comment' => 'Unique Identifier for RiseLMS specific courses',
         'grid' => false,
     ));
-//}
+}
 
 $this->endSetup();

@@ -6,7 +6,7 @@
  * Time: 2:01 PM
  */
 
-class Swarming_RiseLms_Model_Sales_Order extends Mage_Sales_Model_Order
+class Swarming_RiseLms_Model_Sales_Order extends Eyemagine_Elistrak_Model_Sales_Order
 {
     protected $_hasRiseCourse = false;
 

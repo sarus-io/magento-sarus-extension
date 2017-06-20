@@ -35,7 +35,6 @@ class Swarming_RiseLms_Block_Courses extends Mage_Customer_Block_Account_Dashboa
             // Call the course model to get a list of all courses that this customer is part of
             $customerParticipations = $this->_courseModel->participationsGet();
         }
-
         if (isset($customerParticipations['isSuccess']) && $customerParticipations['isSuccess'] && isset($token['isSuccess']) && $token['isSuccess'])
         {
             $customerParticipations['token'] = $token;
