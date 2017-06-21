@@ -32,11 +32,11 @@ class Swarming_RiseLmsProduct_Helper_Data extends Mage_Core_Helper_Abstract
 
     public function getMaxPrice()
     {
-        return (float)Mage::getStoreConfig('riselms_product/configuration/max_price');
+        return (float)Mage::getStoreConfig('riselms_general/product/max_price');
     }
 
     public function getRiselmsMargin()
     {
-        return (float)Mage::getStoreConfig('riselms_product/configuration/riselms_margin');
+        return (float)Mage::getStoreConfig('riselms_general/product/riselms_margin');
     }
 }

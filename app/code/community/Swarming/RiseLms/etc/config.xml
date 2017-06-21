@@ -54,6 +54,21 @@
                 </rise_course_uuid>
             </sales_convert_order_item>
         </fieldsets>
+        <catalog>
+            <product>
+                <type>
+                    <riselms translate="label">
+                        <label>RiseLMS Product</label>
+                        <model>swarming_riselms/product_type</model>
+                        <price_model>swarming_riselms/product_price</price_model>
+                        <composite>0</composite>
+                        <index_priority>25</index_priority>
+                        <can_use_qty_decimals>0</can_use_qty_decimals>
+                        <is_qty>1</is_qty>
+                    </riselms>
+                </type>
+            </product>
+        </catalog>
         <sales>
             <quote>
                 <item>
@@ -73,6 +88,14 @@
                     </swarming_riselms>
                 </observers>
             </sales_quote_item_set_product>
+            <sales_quote_item_qty_set_after>
+                <observers>
+                    <riselms_product>
+                        <class>swarming_riselms/observer_sales_quoteItem_setQtyAfter</class>
+                        <method>execute</method>
+                    </riselms_product>
+                </observers>
+            </sales_quote_item_qty_set_after>
             <catalog_product_delete_before>
                 <observers>
                     <swarming_riselms>

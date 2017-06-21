@@ -1,6 +1,6 @@
 <?php
 
-class Swarming_RiseLmsProduct_Model_Product_Type extends Mage_Catalog_Model_Product_Type_Virtual
+class Swarming_RiseLms_Model_Product_Type extends Mage_Catalog_Model_Product_Type_Virtual
 {
     const TYPE_CODE = 'riselms';
 

@@ -1,6 +1,6 @@
 <?php
 
-class Swarming_RiseLmsProduct_Model_Product_Price extends Mage_Catalog_Model_Product_Type_Price
+class Swarming_RiseLms_Model_Product_Price extends Mage_Catalog_Model_Product_Type_Price
 {
     public function getFinalPrice($qty = null, $product)
     {

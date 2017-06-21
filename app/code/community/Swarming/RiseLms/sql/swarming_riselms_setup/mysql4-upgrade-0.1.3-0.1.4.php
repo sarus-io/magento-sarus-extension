@@ -1,8 +1,12 @@
 <?php
 /** @var Mage_Catalog_Model_Resource_Setup $installer */
 $installer = $this;
+
 $installer->startSetup();
-// apply attributes to new product type
+
+/*
+ *  apply attributes to new product type
+ */
 $attributes = array(
     'price',
     'special_price',
@@ -13,9 +17,11 @@ $attributes = array(
 );
 foreach ($attributes as $attributeCode) {
     $applyTo = explode(',', $installer->getAttribute('catalog_product', $attributeCode, 'apply_to'));
-    if (!in_array(Swarming_RiseLmsProduct_Model_Product_Type::TYPE_CODE, $applyTo)) {
-        $applyTo[] = Swarming_RiseLmsProduct_Model_Product_Type::TYPE_CODE;
+
+    if (!in_array(Swarming_RiseLms_Model_Product_Type::TYPE_CODE, $applyTo)) {
+        $applyTo[] = Swarming_RiseLms_Model_Product_Type::TYPE_CODE;
         $installer->updateAttribute('catalog_product', $attributeCode, 'apply_to', implode(',', $applyTo));
     }
 }
+
 $installer->endSetup();
