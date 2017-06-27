@@ -1,19 +1,37 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <config>
+    <menu>
+        <report>
+            <children>
+                <swarming_riselms translate="title">
+                    <title>Rise LMS Submissions</title>
+                    <action>adminhtml/riselms_submission/index</action>
+                    <sort_order>999</sort_order>
+                </swarming_riselms>
+            </children>
+        </report>
+    </menu>
     <acl>
         <resources>
             <admin>
                 <children>
+                    <report>
+                        <children>
+                            <swarming_riselms translate="title">
+                                <title>Rise LMS Submission</title>
+                            </swarming_riselms>
+                        </children>
+                    </report>
                     <system>
                         <children>
                             <config>
                                 <children>
-                                    <riselms_general>
+                                    <swarming_riselms translate="title">
                                         <title>Rise LMS General</title>
-                                    </riselms_general>
-                                    <riselms_singlesignon>
-                                        <title>Rise LMS Single Sign On</title>
-                                    </riselms_singlesignon>
+                                    </swarming_riselms>
+                                    <!--<riselms_singlesignon translate="title">-->
+                                        <!--<title>Rise LMS Single Sign On</title>-->
+                                    <!--</riselms_singlesignon>-->
                                 </children>
                             </config>
                         </children>

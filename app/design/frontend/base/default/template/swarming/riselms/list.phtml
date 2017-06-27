@@ -1,90 +1,101 @@
-<?php $customerCourses = $this->getCustomerLmsCourses(); ?>
+<?php
+
+/** @var $this Swarming_RiseLms_Block_Courses */
+
+$customerToken = $this->getCustomerToken();
+$customerCourses = $this->getCustomerCourses();
+?>
+<!-- TODO Update css classes and styling -->
 <div class="my-account">
     <div class="page-title">
-        <h1><?php echo $this->__("My Courses") ?></h1>
+        <h1><?php echo $this->__('My Courses') ?></h1>
     </div>
     <div ng-app="BrainMD">
-        <?php if (isset($customerCourses['isSuccess']) && $customerCourses['isSuccess']): ?>
-        <ul class="row">
-            <?php foreach ($customerCourses['data'] as $course): ?>
-            <?php if ($course['course_uuid']):?>
-            <li class="item col-sm-6 col-lg-4" ng-repeat="item in ctrl.purchases">
-                <div class="item-inner">
-                    <h3><?php echo $course['title']; ?></h3>
-                    <?php $courseImage = ($course['image_src'] ? $course['image_src'] : $this->getSkinUrl('/images/catalog/product/placeholder/image.jpg')); ?>
-                    <img class="img-responsive" src="<?php echo $courseImage; ?>" />
-                    <?php // Check if this product is archived ?>
-                    <?php $_redirectProduct = false;?>
-                    <?php if ($_product = Mage::getModel('catalog/product')->loadByAttribute('rise_course_uuid', $course['course_uuid'])):?>
-                     <?php if ($_redirectId = $_product->getRiseRedirectId()):?>
-                       <?php // Load redirect product ?>
-                       <?php if ($_redirectProduct = Mage::getModel('catalog/product')->load($_redirectId)):?>
-                         <div class="add-to-cart" id="add_to_cart">
-                           <div class="alert alert-info alert-archived"><a href="<?php echo $_redirectProduct->getProductUrl();?>"><?php echo $this->__('This course is no longer available. Shop our new course, <em>%s</em>.', $_redirectProduct->getName());?></a></div>
-                         </div>
-                       <?php endif;?>
-                     <?php endif;?>
-                   <?php endif;?>
-                   <?php if (!$_redirectProduct):?>
-                    <a class="btn" target="_blank" href="<?php echo Mage::getStoreConfig('riselms_general/general/rise_base_url'); ?>/e/<?php echo $course['course_uuid']; ?>?login=<?php echo $customerCourses['token']['token']; ?>">Go to Course!</a>
-                   <?php endif;?>
-                </div>
-            </li>
-            <?php endif;?>
-            <?php endforeach; ?>
-        </ul>
+        <?php if (!empty($customerCourses)): ?>
+            <ul class="row">
+                <?php foreach ($customerCourses as $course): ?>
+                    <?php if (empty($course['course_uuid'])): continue; endif;?>
+
+                    <li class="item col-sm-6 col-lg-4" ng-repeat="item in ctrl.purchases">
+                        <div class="item-inner">
+                            <h3><?php echo $this->escapeHtml($course['title']) ?></h3>
+                            <img class="img-responsive" src="<?php echo $this->getCourseImageUrl($course); ?>" />
+
+<!-- TODO Update logic with course replacement -->
+<!--                            --><?php //$_redirectProduct = false;?>
+<!--                            --><?php //if ($_product = Mage::getModel('catalog/product')->loadByAttribute('rise_course_uuid', $course['course_uuid'])):?>
+<!--                                --><?php //if ($_redirectId = $_product->getRiseRedirectId()):?>
+<!--                                    --><?php //// Load redirect product ?>
+<!--                                    --><?php //if ($_redirectProduct = Mage::getModel('catalog/product')->load($_redirectId)):?>
+<!--                                         <div class="add-to-cart" id="add_to_cart">-->
+<!--                                             <div class="alert alert-info alert-archived"><a href="--><?php //echo $_redirectProduct->getProductUrl();?><!--">--><?php //echo $this->__('This course is no longer available. Shop our new course, <em>%s</em>.', $_redirectProduct->getName());?><!--</a></div>-->
+<!--                                         </div>-->
+<!--                                    --><?php //endif;?>
+<!--                                --><?php //endif;?>
+<!--                            --><?php //endif;?>
+<!--                            --><?php //if (!$_redirectProduct):?>
+
+                            <?php if (!empty($customerToken)): ?>
+                                <a class="btn" target="_blank" href="<?php echo $this->getCourseLink($course, $customerToken) ?>"><?php echo $this->__('Go to Course!') ?></a>
+                            <?php endif;?>
+                        </div>
+                    </li>
+                <?php endforeach; ?>
+            </ul>
         <?php else: ?>
-            <p><?php echo $customerCourses['resultMessage']; ?></p>
+            <p><?php echo $this->__('No courses available.') ?></p>
         <?php endif; ?>
     </div>
 </div>
-<style>
-  .my-account .item {
-    text-align: center;
-    margin-bottom: 1em;
-  }
-  .my-account .item h3 {
-    font-size: 20px;
-    font-weight: 400;
-    min-height: 2.1em;
-  }
-  .my-account .item img {
-    margin: 0 auto;
-  }
-  .my-account .item a {
-    display: inline-block;
-    text-decoration: none;
-    margin: 1em 0;
-  }
-  .my-account .item .alert-archived {
-    margin: 30px 0 0;
-  }
-  .my-account .item .alert-archived a {
-    margin: 0;
-  }
-  .my-account .item-inner {
-    padding: 0 1em;
-    background-color: #f1f1f1;
-    overflow: auto;
-  }
-
-  @media (min-width: 768px) {
-    .my-account .item-inner {
-      min-height: 27em;
-    }
-  }
-  @media (min-width: 992px) {
-    .my-account .item-inner {
-      min-height: 26em;
-    }
-  }
-  @media (min-width: 1260px) {
-    .my-account .item-inner {
-      min-height: 23em;
-    }
-  }
-</style>
-    <div class="buttons-set">
-        <p class="back-link"><a href="<?php echo Mage::getUrl('customer/account/'); ?>"><small>&#171;</small> <?php echo $this->__("Back") ?></a></p>
-    </div>
+<div class="buttons-set">
+    <p class="back-link">
+        <a href="<?php echo Mage::getUrl('customer/account/'); ?>"><small>&#171;</small> <?php echo $this->__('Back') ?></a>
+    </p>
 </div>
+
+<style>
+    .my-account .item {
+        text-align: center;
+        margin-bottom: 1em;
+    }
+    .my-account .item h3 {
+        font-size: 20px;
+        font-weight: 400;
+        min-height: 2.1em;
+    }
+    .my-account .item img {
+        margin: 0 auto;
+    }
+    .my-account .item a {
+        display: inline-block;
+        text-decoration: none;
+        margin: 1em 0;
+    }
+    .my-account .item .alert-archived {
+        margin: 30px 0 0;
+    }
+    .my-account .item .alert-archived a {
+        margin: 0;
+    }
+    .my-account .item-inner {
+        padding: 0 1em;
+        background-color: #f1f1f1;
+        overflow: auto;
+    }
+
+    @media (min-width: 768px) {
+        .my-account .item-inner {
+            min-height: 27em;
+        }
+    }
+    @media (min-width: 992px) {
+        .my-account .item-inner {
+            min-height: 26em;
+        }
+    }
+    @media (min-width: 1260px) {
+        .my-account .item-inner {
+            min-height: 23em;
+        }
+    }
+</style>

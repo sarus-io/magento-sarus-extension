@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<layout>
+    <adminhtml_riselms_submission_index>
+        <reference name="content">
+            <block type="swarming_riselms/adminhtml_errorLog" name="swarming_riselms.log" />
+        </reference>
+    </adminhtml_riselms_submission_index>
+
+    <adminhtml_riselms_submission_grid>
+        <block type="core/text_list" name="root" output="toHtml">
+            <block type="swarming_riselms/adminhtml_errorLog_grid" name="swarming_riselms.log.grid"/>
+        </block>
+    </adminhtml_riselms_submission_grid>
+</layout>

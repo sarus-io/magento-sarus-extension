@@ -1,15 +1,15 @@
 <?xml version="1.0"?>
 <config>
     <tabs>
-        <riselms_config translate="label" module="swarming_riselms">
-            <label>Rise LMS</label>
+        <swarming translate="label">
+            <label>Swarming</label>
             <sort_order>99999</sort_order>
-        </riselms_config>
+        </swarming>
     </tabs>
     <sections>
-        <riselms_general translate="label" module="swarming_riselms">
-            <label>General</label>
-            <tab>riselms_config</tab>
+        <swarming_riselms translate="label">
+            <label>Rise LMS</label>
+            <tab>swarming</tab>
             <frontend_type>text</frontend_type>
             <sort_order>1000</sort_order>
             <show_in_default>1</show_in_default>
@@ -24,179 +24,89 @@
                     <show_in_website>1</show_in_website>
                     <show_in_store>1</show_in_store>
                     <fields>
-                        <rise_enabled>
+                        <enabled translate="label">
                             <label>Enabled</label>
                             <frontend_type>select</frontend_type>
                             <source_model>adminhtml/system_config_source_yesno</source_model>
-                            <sort_order>1</sort_order>
-                            <show_in_default>1</show_in_default>
-                            <show_in_website>1</show_in_website>
-                            <show_in_store>1</show_in_store>
-                        </rise_enabled>
-                        <rise_debug_mode>
-                            <label>Debug Mode</label>
-                            <frontend_type>select</frontend_type>
-                            <source_model>adminhtml/system_config_source_yesno</source_model>
-                            <sort_order>2</sort_order>
-                            <show_in_default>1</show_in_default>
-                            <show_in_website>1</show_in_website>
-                            <show_in_store>1</show_in_store>
-                        </rise_debug_mode>
-                        <rise_my_courses>
-                            <label>My Courses Enabled</label>
-                            <frontend_type>select</frontend_type>
-                            <source_model>adminhtml/system_config_source_yesno</source_model>
-                            <sort_order>3</sort_order>
-                            <show_in_default>1</show_in_default>
-                            <show_in_website>1</show_in_website>
-                            <show_in_store>1</show_in_store>
-                        </rise_my_courses>
-                        <rise_api_auth_token>
-                            <label>Authorization Token</label>
-                            <frontend_type>password</frontend_type>
-                            <sort_order>6</sort_order>
-                            <show_in_default>1</show_in_default>
-                            <show_in_website>1</show_in_website>
-                            <show_in_store>1</show_in_store>
-                        </rise_api_auth_token>
-                        <rise_base_url>
-                            <label>Rise LMS Base URL</label>
-                            <comment>Base URL for RiseLMS install. Do not include trailing slash (/). i.e. http://mycompany.riselms.com</comment>
-                            <frontend_type>text</frontend_type>
-                            <sort_order>7</sort_order>
-                            <show_in_default>1</show_in_default>
-                            <show_in_website>1</show_in_website>
-                            <show_in_store>1</show_in_store>
-                        </rise_base_url>
-                        <rise_api_base_url>
-                            <label>API Base URL</label>
-                            <comment>Base URL for RiseLMS API. Do not include trailing slash (/). i.e. http://api.riselms.com</comment>
-                            <frontend_type>text</frontend_type>
-                            <sort_order>8</sort_order>
-                            <show_in_default>1</show_in_default>
-                            <show_in_website>1</show_in_website>
-                            <show_in_store>1</show_in_store>
-                        </rise_api_base_url>
-                        <rise_api_purchase_endpoint>
-                            <label>Order Complete Endpoint</label>
-                            <frontend_type>text</frontend_type>
-                            <sort_order>9</sort_order>
-                            <show_in_default>1</show_in_default>
-                            <show_in_website>1</show_in_website>
-                            <show_in_store>1</show_in_store>
-                        </rise_api_purchase_endpoint>
-                        <rise_api_creditmemo_endpoint>
-                            <label>Course Deactivation Endpoint</label>
-                            <frontend_type>text</frontend_type>
-                            <sort_order>9</sort_order>
-                            <show_in_default>1</show_in_default>
-                            <show_in_website>1</show_in_website>
-                            <show_in_store>1</show_in_store>
-                        </rise_api_creditmemo_endpoint>
-                        <rise_api_courses_endpoint>
-                            <label>My Courses Endpoint</label>
-                            <frontend_type>text</frontend_type>
                             <sort_order>10</sort_order>
                             <show_in_default>1</show_in_default>
                             <show_in_website>1</show_in_website>
-                            <show_in_store>1</show_in_store>
-                        </rise_api_courses_endpoint>
-                        <rise_api_unlink_endpoint>
-                            <label>Course Unlink Endpoint</label>
-                            <frontend_type>text</frontend_type>
-                            <sort_order>11</sort_order>
-                            <show_in_default>1</show_in_default>
-                            <show_in_website>1</show_in_website>
-                            <show_in_store>1</show_in_store>
-                        </rise_api_unlink_endpoint>
-                        <rise_api_course_token_endpoint>
-                            <label>Course Token Endpoint</label>
-                            <frontend_type>text</frontend_type>
-                            <sort_order>12</sort_order>
-                            <show_in_default>1</show_in_default>
-                            <show_in_website>1</show_in_website>
-                            <show_in_store>1</show_in_store>
-                        </rise_api_course_token_endpoint>
-                        <rise_api_notification_recipient>
-                            <label>Rise LMS Notification Recipient</label>
-                            <frontend_type>text</frontend_type>
-                            <sort_order>13</sort_order>
-                            <show_in_default>1</show_in_default>
-                            <show_in_website>1</show_in_website>
-                            <show_in_store>1</show_in_store>
-                        </rise_api_notification_recipient>
-                        <rise_submissionqueue_log translate="button_label">
-                            <label></label>
-                            <button_label>View Failed Submissions</button_label>
-                            <frontend_model>swarming_riselms/adminhtml_system_config_errorLog</frontend_model>
-                            <sort_order>999</sort_order>
-                            <show_in_default>1</show_in_default>
-                            <show_in_website>0</show_in_website>
                             <show_in_store>0</show_in_store>
-                        </rise_submissionqueue_log>
+                        </enabled>
+                        <my_courses translate="label">
+                            <label>My Courses Enabled</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </my_courses>
+                        <rise_base_url translate="label">
+                            <label>Rise LMS Base URL</label>
+                            <comment>Base URL for RiseLMS install. i.e. http://mycompany.riselms.com</comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>30</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </rise_base_url>
                     </fields>
                 </general>
-                <product>
-                    <label>Configurations</label>
+                <api>
+                    <label>API Config</label>
                     <frontend_type>text</frontend_type>
                     <sort_order>10</sort_order>
                     <show_in_default>1</show_in_default>
                     <show_in_website>1</show_in_website>
                     <show_in_store>0</show_in_store>
                     <fields>
-                   <!-- <max_price translate="label">
-                            <label>Maximum price customer can set</label>
+                        <base_url translate="label comment">
+                            <label>API Base URL</label>
+                            <comment>Base URL for RiseLMS API. i.e. http://api.riselms.com</comment>
                             <frontend_type>text</frontend_type>
-                            <validate>validate-number</validate>
-                            <backend_model>swarming_riselms/system_config_backend_price</backend_model>
-                            <sort_order>5</sort_order>
-                            <show_in_default>1</show_in_default>
-                            <show_in_website>1</show_in_website>
-                            <show_in_store>0</show_in_store>
-                        </max_price> -->
-                        <riselms_margin translate="label">
-                            <label>Rise LMS margin</label>
-                            <frontend_type>text</frontend_type>
-                            <validate>validate-number</validate>
-                            <backend_model>swarming_riselms/system_config_backend_price</backend_model>
                             <sort_order>10</sort_order>
                             <show_in_default>1</show_in_default>
                             <show_in_website>1</show_in_website>
                             <show_in_store>0</show_in_store>
-                        </riselms_margin>
+                        </base_url>
+                        <auth_token translate="label">
+                            <label>Authorization Token</label>
+                            <frontend_type>password</frontend_type>
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </auth_token>
+                        <debug translate="label">
+                            <label>Debug Mode</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>30</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </debug>
+                        <notification_recipient translate="label comment">
+                            <label>Notification Recipients</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>40</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </notification_recipient>
+                        <max_time_resend translate="label comment">
+                            <label>Maximum Resend Attempts</label>
+                            <comment>The maximum number of times failed submissions will attempt to be sent. Leave empty or enter 0 for unlimited attempts.</comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>50</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </max_time_resend>
                     </fields>
-                </product>
+                </api>
             </groups>
-        </riselms_general>
-        <!--<riselms_singlesignon>-->
-            <!--<label>Single Sign On</label>-->
-            <!--<tab>riselms_config</tab>-->
-            <!--<frontend_type>text</frontend_type>-->
-            <!--<sort_order>1010</sort_order>-->
-            <!--<show_in_default>1</show_in_default>-->
-            <!--<show_in_website>1</show_in_website>-->
-            <!--<show_in_store>1</show_in_store>-->
-            <!--<groups>-->
-                <!--<single_sign_on translate="label">-->
-                    <!--<label>Single Sign On</label>-->
-                    <!--<frontend_type>text</frontend_type>-->
-                    <!--<sort_order>1</sort_order>-->
-                    <!--<show_in_default>1</show_in_default>-->
-                    <!--<show_in_website>1</show_in_website>-->
-                    <!--<show_in_store>1</show_in_store>-->
-                    <!--<fields>-->
-                        <!--<sso_enabled>-->
-                            <!--<label>Enabled</label>-->
-                            <!--<frontend_type>select</frontend_type>-->
-                            <!--<source_model>adminhtml/system_config_source_yesno</source_model>-->
-                            <!--<sort_order>3</sort_order>-->
-                            <!--<show_in_default>1</show_in_default>-->
-                            <!--<show_in_website>1</show_in_website>-->
-                            <!--<show_in_store>1</show_in_store>-->
-                        <!--</sso_enabled>-->
-                    <!--</fields>-->
-                <!--</single_sign_on>-->
-            <!--</groups>-->
-        <!--</riselms_singlesignon>-->
+        </swarming_riselms>
     </sections>
 </config>

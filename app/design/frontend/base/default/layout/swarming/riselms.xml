@@ -1,5 +1,15 @@
 <?xml version="1.0"?>
 <layout version="0.1.0">
+    <customer_account>
+        <reference name="customer_account_navigation">
+            <action method="addLink" ifconfig="swarming_riselms/general/my_courses">
+                <name>swarming_riselms_list_index</name>
+                <path>swarming_riselms/list/index</path>
+                <label>My Courses</label>
+            </action>
+        </reference>
+    </customer_account>
+
     <swarming_riselms_list_index>
     	<update handle="customer_account" />
     	<reference name="root">
@@ -11,17 +21,6 @@
             <block type="swarming_riselms/courses" name="riselms.courselist" template="swarming/riselms/list.phtml"/>
         </reference>
     </swarming_riselms_list_index>
-
-
-    <customer_account>
-        <reference name="customer_account_navigation">
-            <action method="addLink">
-                <name>swarming_riselms_list_index</name>
-                <path>swarming_riselms/list/index</path>
-                <label>My Courses</label>
-            </action>
-        </reference>
-    </customer_account>
 
     <PRODUCT_TYPE_riselms translate="label" module="riselms_product">
         <label>Catalog Product View (Riselms)</label>

@@ -2,7 +2,7 @@
 <config>
     <modules>
         <Swarming_RiseLms>
-            <version>0.1.3</version>
+            <version>0.1.0</version>
         </Swarming_RiseLms>
     </modules>
     <global>
@@ -14,16 +14,11 @@
             <swarming_riselms_resource>
                 <class>Swarming_RiseLms_Model_Resource</class>
                 <entities>
-                    <riselms_submissionqueue>
-                        <table>riselms_submissionqueue</table>
-                    </riselms_submissionqueue>
+                    <riselms_submission>
+                        <table>riselms_submission</table>
+                    </riselms_submission>
                 </entities>
             </swarming_riselms_resource>
-            <elistrak>
-                <rewrite>
-                    <order>Swarming_RiseLms_Model_Sales_Order</order>
-                </rewrite>
-            </elistrak>
         </models>
         <blocks>
             <swarming_riselms>
@@ -60,7 +55,6 @@
                     <riselms translate="label">
                         <label>RiseLMS Product</label>
                         <model>swarming_riselms/product_type</model>
-                        <price_model>swarming_riselms/product_price</price_model>
                         <composite>0</composite>
                         <index_priority>25</index_priority>
                         <can_use_qty_decimals>0</can_use_qty_decimals>
@@ -79,12 +73,21 @@
             </quote>
         </sales>
         <events>
+            <checkout_allow_guest>
+                <observers>
+                    <swarming_riselms>
+                        <type>singleton</type>
+                        <class>swarming_riselms/observer_checkout_allowGuest</class>
+                        <method>execute</method>
+                    </swarming_riselms>
+                </observers>
+            </checkout_allow_guest>
             <sales_quote_item_set_product>
                 <observers>
                     <swarming_riselms>
                         <type>model</type>
-                        <class>swarming_riselms/observer</class>
-                        <method>setRiseUuidOnQuoteItem</method>
+                        <class>swarming_riselms/observer_sales_quoteItem_setProduct</class>
+                        <method>execute</method>
                     </swarming_riselms>
                 </observers>
             </sales_quote_item_set_product>
@@ -96,28 +99,12 @@
                     </riselms_product>
                 </observers>
             </sales_quote_item_qty_set_after>
-            <catalog_product_delete_before>
-                <observers>
-                    <swarming_riselms>
-                        <class>swarming_riselms/observer</class>
-                        <method>onProductDeleteBeforeUnlink</method>
-                    </swarming_riselms>
-                </observers>
-            </catalog_product_delete_before>
-            <!--<checkout_allow_guest>-->
-                <!--<observers>-->
-                    <!--<checkout_allow_guest>-->
-                        <!--<class>swarming_riselms/observer</class>-->
-                        <!--<method>isAllowedGuestCheckout</method>-->
-                    <!--</checkout_allow_guest>-->
-                <!--</observers>-->
-            <!--</checkout_allow_guest>-->
             <sales_order_place_after>
                 <observers>
                     <swarming_riselms>
                         <type>singleton</type>
-                        <class>swarming_riselms/observer</class>
-                        <method>checkProductsAfterPurchase</method>
+                        <class>swarming_riselms/observer_sales_order_placeAfter</class>
+                        <method>execute</method>
                     </swarming_riselms>
                 </observers>
             </sales_order_place_after>
@@ -125,12 +112,19 @@
                 <observers>
                     <swarming_riselms>
                         <type>singleton</type>
-                        <class>swarming_riselms/observer</class>
-                        <method>creditmemoSaveAfter</method>
+                        <class>swarming_riselms/observer_Sales_Creditmemo_Refund</class>
+                        <method>execute</method>
                     </swarming_riselms>
                 </observers>
             </sales_order_creditmemo_refund>
-
+            <catalog_product_delete_before>
+                <observers>
+                    <swarming_riselms>
+                        <class>swarming_riselms/observer_Catalog_ProductDeleteBefore</class>
+                        <method>execute</method>
+                    </swarming_riselms>
+                </observers>
+            </catalog_product_delete_before>
         </events>
     </global>
     <frontend>
@@ -154,13 +148,22 @@
     <crontab>
         <jobs>
             <riselms_unsynced_products_catalog>
-                <schedule><cron_expr>*/1 * * * *</cron_expr></schedule>
+                <schedule><cron_expr>*/10 * * * *</cron_expr></schedule>
                 <run>
-                    <model>swarming_riselms/observer::syncSubmissionQueue</model>
+                    <model>swarming_riselms/cron_submissionQueue::execute</model>
                 </run>
             </riselms_unsynced_products_catalog>
         </jobs>
     </crontab>
+    <adminhtml>
+        <layout>
+            <updates>
+                <swarming_buzzi>
+                    <file>swarming/riselms.xml</file>
+                </swarming_buzzi>
+            </updates>
+        </layout>
+    </adminhtml>
     <admin>
         <routers>
             <adminhtml>
@@ -172,4 +175,15 @@
             </adminhtml>
         </routers>
     </admin>
+    <default>
+        <swarming_riselms>
+            <general>
+                <enabled>1</enabled>
+                <my_courses>1</my_courses>
+            </general>
+            <api>
+                <max_time_resend>5</max_time_resend>
+            </api>
+        </swarming_riselms>
+    </default>
 </config>
