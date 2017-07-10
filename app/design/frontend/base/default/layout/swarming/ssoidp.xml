@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<layout version="0.1.0">
+    <swarming_ssoidp_idp_login>
+        <reference name="root">
+            <action method="setTemplate">
+                <template>page/empty.phtml</template>
+            </action>
+        </reference>
+        <reference name="content">
+            <block type="swarming_ssoidp/login" name="sso.idp.login" template="swarming/ssoidp/login.phtml"/>
+        </reference>
+    </swarming_ssoidp_idp_login>
+</layout>
