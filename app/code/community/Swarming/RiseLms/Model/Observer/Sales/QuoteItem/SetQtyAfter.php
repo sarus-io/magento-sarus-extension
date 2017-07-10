@@ -34,7 +34,7 @@ class Swarming_RiseLms_Model_Observer_Sales_QuoteItem_SetQtyAfter
         }
 
         if ($this->_productHelper->isRiseLms($item->getProduct())) {
-            // TODO add message to user if they try to add more then 1 RiseLMS Prod.
+            // TODO add message to user if they try to add more then 1 Rise LMS Prod.
             $item->setData('qty', 1);
         }
     }

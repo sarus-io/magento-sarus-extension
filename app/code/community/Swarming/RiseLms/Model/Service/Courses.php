@@ -52,7 +52,7 @@ class Swarming_RiseLms_Model_Service_Courses
     protected function _readCourses($result)
     {
         if (empty($result['data'])) {
-            Mage::throwException('RiseLms courses are not sent.');
+            Mage::throwException('Rise LMS courses are not sent.');
         }
         return (array)$result['data'];
     }

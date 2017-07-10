@@ -55,9 +55,9 @@ class Swarming_RiseLms_Model_Observer_Catalog_ProductDeleteBefore
         $result = $this->_unlinkProductService->unlinkProduct($product->getId(), $product->getStoreId());
 
         if ($result) {
-            $this->_getSession()->addSuccess('Product has been successfully unlinked from RiseLMS.');
+            $this->_getSession()->addSuccess('Product has been successfully unlinked from Rise LMS.');
         } else {
-            $this->_getSession()->addError('Product could not be successfully unlinked from RiseLMS.');
+            $this->_getSession()->addError('Product could not be successfully unlinked from Rise LMS.');
         }
     }
 }

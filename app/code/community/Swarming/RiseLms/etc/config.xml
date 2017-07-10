@@ -53,7 +53,7 @@
             <product>
                 <type>
                     <riselms translate="label">
-                        <label>RiseLMS Product</label>
+                        <label>Rise LMS Product</label>
                         <model>swarming_riselms/product_type</model>
                         <composite>0</composite>
                         <index_priority>25</index_priority>
@@ -183,6 +183,7 @@
             </general>
             <api>
                 <max_time_resend>5</max_time_resend>
+                <base_url>https://api.riselms.com</base_url>
             </api>
         </swarming_riselms>
     </default>

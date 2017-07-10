@@ -53,7 +53,7 @@ class Swarming_RiseLms_Model_Service_Token
     protected function _readToken($result)
     {
         if (empty($result['token'])) {
-            Mage::throwException('RiseLms token is empty.');
+            Mage::throwException('Rise LMS token is empty.');
         }
         return $result['token'];
     }
