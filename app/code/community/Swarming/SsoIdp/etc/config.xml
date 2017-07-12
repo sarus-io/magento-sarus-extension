@@ -74,9 +74,9 @@
         </routers>
         <layout>
             <updates>
-                <swarming_riselms>
+                <swarming_ssoudp>
                     <file>swarming/ssoidp.xml</file>
-                </swarming_riselms>
+                </swarming_ssoudp>
             </updates>
         </layout>
     </frontend>
