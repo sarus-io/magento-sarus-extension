@@ -19,7 +19,7 @@
                 <general translate="label">
                     <label>General</label>
                     <frontend_type>text</frontend_type>
-                    <sort_order>1</sort_order>
+                    <sort_order>10</sort_order>
                     <show_in_default>1</show_in_default>
                     <show_in_website>1</show_in_website>
                     <show_in_store>0</show_in_store>
@@ -74,10 +74,53 @@
                     </fields>
                 </general>
 
+                <contact translate="label">
+                    <label>Contacts</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>20</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>0</show_in_store>
+                    <fields>
+                        <technical_contact_given_name translate="label">
+                            <label>Technical Given Name</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </technical_contact_given_name>
+                        <technical_contact_email translate="label">
+                            <label>Technical Email</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </technical_contact_email>
+                        <support_contact_given_name translate="label">
+                            <label>Support Given Name</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>30</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </support_contact_given_name>
+                        <support_contact_email translate="label">
+                            <label>Support Email</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>40</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </support_contact_email>
+                    </fields>
+                </contact>
+
                 <security translate="label">
                     <label>Security</label>
                     <frontend_type>text</frontend_type>
-                    <sort_order>10</sort_order>
+                    <sort_order>30</sort_order>
                     <show_in_default>1</show_in_default>
                     <show_in_website>1</show_in_website>
                     <show_in_store>0</show_in_store>
@@ -213,7 +256,7 @@
                 <credentials translate="label">
                     <label>Credentials</label>
                     <frontend_type>text</frontend_type>
-                    <sort_order>30</sort_order>
+                    <sort_order>40</sort_order>
                     <show_in_default>1</show_in_default>
                     <show_in_website>1</show_in_website>
                     <show_in_store>0</show_in_store>
@@ -236,53 +279,6 @@
                         </cert>
                     </fields>
                 </credentials>
-
-                <contact translate="label">
-                    <label>Contacts</label>
-                    <frontend_type>text</frontend_type>
-                    <sort_order>40</sort_order>
-                    <show_in_default>1</show_in_default>
-                    <show_in_website>1</show_in_website>
-                    <show_in_store>0</show_in_store>
-                    <fields>
-                        <technical_contact_given_name translate="label comment">
-                            <label>Technical Given Name</label>
-                            <frontend_type>text</frontend_type>
-                            <comment><![CDATA[Optional. Leave empty to disable]]></comment>
-                            <sort_order>10</sort_order>
-                            <show_in_default>1</show_in_default>
-                            <show_in_website>1</show_in_website>
-                            <show_in_store>0</show_in_store>
-                        </technical_contact_given_name>
-                        <technical_contact_email translate="label comment">
-                            <label>Technical Email</label>
-                            <frontend_type>text</frontend_type>
-                            <comment><![CDATA[Optional. Leave empty to disable]]></comment>
-                            <sort_order>20</sort_order>
-                            <show_in_default>1</show_in_default>
-                            <show_in_website>1</show_in_website>
-                            <show_in_store>0</show_in_store>
-                        </technical_contact_email>
-                        <support_contact_given_name translate="label comment">
-                            <label>Support Given Name</label>
-                            <frontend_type>text</frontend_type>
-                            <comment><![CDATA[Optional. Leave empty to disable]]></comment>
-                            <sort_order>30</sort_order>
-                            <show_in_default>1</show_in_default>
-                            <show_in_website>1</show_in_website>
-                            <show_in_store>0</show_in_store>
-                        </support_contact_given_name>
-                        <support_contact_email translate="label comment">
-                            <label>Support Email</label>
-                            <frontend_type>text</frontend_type>
-                            <comment><![CDATA[Optional. Leave empty to disable]]></comment>
-                            <sort_order>40</sort_order>
-                            <show_in_default>1</show_in_default>
-                            <show_in_website>1</show_in_website>
-                            <show_in_store>0</show_in_store>
-                        </support_contact_email>
-                    </fields>
-                </contact>
 
                 <sp translate="label">
                     <label>Service Provider</label>
