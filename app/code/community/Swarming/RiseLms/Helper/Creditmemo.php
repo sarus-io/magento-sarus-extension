@@ -23,6 +23,9 @@ class Swarming_RiseLms_Helper_Creditmemo
         /** @var Mage_Sales_Model_Order_Creditmemo_Item $item */
         foreach ($creditmemo->getAllItems() as $item) {
             $product = $item->getOrderItem()->getProduct();
+            if ($product->isComposite()) {
+                continue;
+            }
             if ($this->_productHelper->isRiseLms($product)) {
                 $riseLmsProductIds[] = $product->getId();
             }
@@ -42,6 +45,9 @@ class Swarming_RiseLms_Helper_Creditmemo
         /** @var Mage_Sales_Model_Order_Creditmemo_Item $item */
         foreach ($creditmemo->getAllItems() as $item) {
             $product = $item->getOrderItem()->getProduct();
+            if ($product->isComposite()) {
+                continue;
+            }
             if ($this->_productHelper->isRiseLms($product)) {
                 $uuids[] = $product->getData(Swarming_RiseLms_Model_Product_Type::ATTRIBUTE_COURSE_UUID);
             }

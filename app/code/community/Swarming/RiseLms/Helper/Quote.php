@@ -34,13 +34,41 @@ class Swarming_RiseLms_Helper_Quote
         $result = false;
 
         /** @var Mage_Sales_Model_Quote_Item $quoteItem */
-        foreach ($quote->getAllItems() as $quoteItem) {
-            if ($this->_productHelper->isRiseLms($quoteItem->getProduct())) {
+        foreach ($quote->getAllVisibleItems() as $quoteItem) {
+            if ($this->hasQuoteItemRiseProduct($quoteItem)) {
                 $result = true;
                 break;
             }
         }
 
+        return $result;
+    }
+
+    /**
+     * @param Mage_Sales_Model_Quote_Item $quoteItem
+     * @return bool
+     */
+    public function hasQuoteItemRiseProduct($quoteItem)
+    {
+        return $quoteItem->getChildren()
+            ? $this->_hasChildItemsRiseProduct($quoteItem)
+            : $this->_productHelper->isRiseLms($quoteItem->getProduct());
+    }
+
+    /**
+     * @param Mage_Sales_Model_Quote_Item $quoteItem
+     * @return bool
+     */
+    protected function _hasChildItemsRiseProduct($quoteItem)
+    {
+        $result = false;
+        /** @var Mage_Sales_Model_Quote_Item $childItem */
+        foreach ($quoteItem->getChildren() as $childItem) {
+            if ($this->_productHelper->isRiseLms($childItem->getProduct())) {
+                $result = true;
+                break;
+            }
+        }
         return $result;
     }
 }

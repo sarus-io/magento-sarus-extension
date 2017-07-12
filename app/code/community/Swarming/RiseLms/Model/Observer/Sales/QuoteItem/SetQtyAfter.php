@@ -8,14 +8,14 @@ class Swarming_RiseLms_Model_Observer_Sales_QuoteItem_SetQtyAfter
     protected $_configGeneral;
 
     /**
-     * @var Swarming_RiseLms_Helper_Product
+     * @var Swarming_RiseLms_Helper_Quote
      */
-    protected $_productHelper;
+    protected $_quoteHelper;
 
     public function __construct()
     {
         $this->_configGeneral = Mage::getModel('swarming_riselms/config_general');
-        $this->_productHelper = Mage::helper('swarming_riselms/product');
+        $this->_quoteHelper = Mage::helper('swarming_riselms/quote');
     }
 
     /**
@@ -26,16 +26,16 @@ class Swarming_RiseLms_Model_Observer_Sales_QuoteItem_SetQtyAfter
      */
     public function execute($observer)
     {
-        /** @var Mage_Sales_Model_Quote_Item $item */
-        $item = $observer->getData('item');
+        /** @var Mage_Sales_Model_Quote_Item $quoteItem */
+        $quoteItem = $observer->getData('item');
 
-        if (!$this->_configGeneral->isEnabled($item->getStoreId())) {
+        if (!$this->_configGeneral->isEnabled($quoteItem->getStoreId())) {
             return;
         }
 
-        if ($this->_productHelper->isRiseLms($item->getProduct())) {
+        if ($this->_quoteHelper->hasQuoteItemRiseProduct($quoteItem)) {
             // TODO add message to user if they try to add more then 1 Rise LMS Prod.
-            $item->setData('qty', 1);
+            $quoteItem->setData('qty', 1);
         }
     }
 }
