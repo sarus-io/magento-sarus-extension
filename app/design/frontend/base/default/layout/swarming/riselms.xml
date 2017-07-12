@@ -18,7 +18,7 @@
             </action>
         </reference>
         <reference name="content">
-            <block type="swarming_riselms/courses" name="riselms.courselist" template="swarming/riselms/list.phtml"/>
+            <block type="swarming_riselms/courses" name="riselms.courselist" template="swarming/riselms/courses.phtml"/>
         </reference>
     </swarming_riselms_list_index>
 
