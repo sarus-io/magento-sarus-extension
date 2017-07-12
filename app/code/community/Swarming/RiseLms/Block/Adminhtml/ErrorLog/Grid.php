@@ -21,6 +21,14 @@ class Swarming_RiseLms_Block_Adminhtml_ErrorLog_Grid extends Mage_Adminhtml_Bloc
     }
 
     /**
+     * @return array
+     */
+    protected function _getActions()
+    {
+        return Mage::getModel('swarming_riselms/config_source_apiAction')->toOptionHash();
+    }
+
+    /**
      * @return $this
      */
     protected function _prepareCollection()
@@ -69,18 +77,14 @@ class Swarming_RiseLms_Block_Adminhtml_ErrorLog_Grid extends Mage_Adminhtml_Bloc
         );
 
         $this->addColumn(
-            'api_method',
-            array(
-                'header' => $this->__('API Method'),
-                'index' => 'api_method'
-            )
-        );
-
-        $this->addColumn(
             'api_endpoint',
             array(
-                'header' => $this->__('API Endpoint'),
-                'index' => 'api_endpoint'
+                'header' => $this->__('Api Action'),
+                'index' => 'api_endpoint',
+                'type'     => 'options',
+                'sortable' => false,
+                'options'  => $this->_getActions(),
+                'width'    => 130
             )
         );
 
