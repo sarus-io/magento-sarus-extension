@@ -43,14 +43,6 @@ class Swarming_RiseLms_Block_Courses extends Mage_Customer_Block_Account_Dashboa
     }
 
     /**
-     * @return string|null
-     */
-    public function getCustomerToken()
-    {
-        return $this->_tokenService->getToken($this->_getCustomerEmail());
-    }
-
-    /**
      * @return string
      */
     protected function _getCustomerEmail()
@@ -72,11 +64,10 @@ class Swarming_RiseLms_Block_Courses extends Mage_Customer_Block_Account_Dashboa
 
     /**
      * @param array $courseData
-     * @param string $customerToken
      * @return string
      */
-    public function getCourseLink($courseData, $customerToken)
+    public function getCourseLink($courseData)
     {
-        return $this->_configGeneral->getRiseBaseUrl() . '/e/' . $courseData['course_uuid'] . '?login=' . $customerToken;
+        return $this->_configGeneral->getRiseBaseUrl() . '/e/' . $courseData['course_uuid'];
     }
 }

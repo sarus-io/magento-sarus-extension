@@ -2,7 +2,6 @@
 
 /** @var $this Swarming_RiseLms_Block_Courses */
 
-$customerToken = $this->getCustomerToken();
 $customerCourses = $this->getCustomerCourses();
 ?>
 <!-- TODO Update css classes and styling -->
@@ -20,24 +19,7 @@ $customerCourses = $this->getCustomerCourses();
                         <div class="item-inner">
                             <h3><?php echo $this->escapeHtml($course['title']) ?></h3>
                             <img class="img-responsive" src="<?php echo $this->getCourseImageUrl($course); ?>" />
-
-<!-- TODO Update logic with course replacement -->
-<!--                            --><?php //$_redirectProduct = false;?>
-<!--                            --><?php //if ($_product = Mage::getModel('catalog/product')->loadByAttribute('rise_course_uuid', $course['course_uuid'])):?>
-<!--                                --><?php //if ($_redirectId = $_product->getRiseRedirectId()):?>
-<!--                                    --><?php //// Load redirect product ?>
-<!--                                    --><?php //if ($_redirectProduct = Mage::getModel('catalog/product')->load($_redirectId)):?>
-<!--                                         <div class="add-to-cart" id="add_to_cart">-->
-<!--                                             <div class="alert alert-info alert-archived"><a href="--><?php //echo $_redirectProduct->getProductUrl();?><!--">--><?php //echo $this->__('This course is no longer available. Shop our new course, <em>%s</em>.', $_redirectProduct->getName());?><!--</a></div>-->
-<!--                                         </div>-->
-<!--                                    --><?php //endif;?>
-<!--                                --><?php //endif;?>
-<!--                            --><?php //endif;?>
-<!--                            --><?php //if (!$_redirectProduct):?>
-
-                            <?php if (!empty($customerToken)): ?>
-                                <a class="btn" target="_blank" href="<?php echo $this->getCourseLink($course, $customerToken) ?>"><?php echo $this->__('Go to Course!') ?></a>
-                            <?php endif;?>
+                            <a class="btn" target="_blank" href="<?php echo $this->getCourseLink($course) ?>"><?php echo $this->__('Go to Course!') ?></a>
                         </div>
                     </li>
                 <?php endforeach; ?>
