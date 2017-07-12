@@ -37,9 +37,8 @@ class Swarming_RiseLms_Model_Service_UnlinkProduct
         try {
             $this->_submissionManager->sendSubmission($submission);
             $result = true;
-        } catch (Mage_Core_Exception $e) {
+        } catch (Exception $e) {
             Mage::logException($e);
-            // TODO Do we need resync
             $result = false;
         }
 

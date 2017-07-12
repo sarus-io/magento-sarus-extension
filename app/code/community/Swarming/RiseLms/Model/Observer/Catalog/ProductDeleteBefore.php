@@ -17,11 +17,17 @@ class Swarming_RiseLms_Model_Observer_Catalog_ProductDeleteBefore
      */
     protected $_unlinkProductService;
 
+    /**
+     * @var Mage_Core_Model_App
+     */
+    protected $_app;
+
     public function __construct()
     {
         $this->_configGeneral = Mage::getModel('swarming_riselms/config_general');
         $this->_productHelper = Mage::helper('swarming_riselms/product');
         $this->_unlinkProductService = Mage::getModel('swarming_riselms/service_unlinkProduct');
+        $this->_app = Mage::app();
     }
 
     /**
@@ -41,23 +47,35 @@ class Swarming_RiseLms_Model_Observer_Catalog_ProductDeleteBefore
         /** @var Mage_Catalog_Model_Product $product */
         $product = $observer->getData('product');
 
-        if (!$this->_configGeneral->isEnabled($product->getStoreId())) {
-            return;
-        }
-
         if (!$this->_productHelper->isRiseLms($product)) {
             return;
         }
 
-//        $product->getWebsiteIds()
+        foreach ($product->getWebsiteIds() as $websiteId) {
+            $storeId = $this->_app->getWebsite($websiteId)->getDefaultStore()->getId();
+            if (!$this->_configGeneral->isEnabled($storeId)) {
+                continue;
+            }
 
-        // TODO Which store should be used here?
-        $result = $this->_unlinkProductService->unlinkProduct($product->getId(), $product->getStoreId());
+            $this->_unlinkProduct($product, $storeId);
+        }
+    }
 
+    /**
+     * @param Mage_Catalog_Model_Product $product
+     * @param int $storeId
+     * @return void
+     */
+    protected function _unlinkProduct($product, $storeId)
+    {
+        $result = $this->_unlinkProductService->unlinkProduct($product->getId(), $storeId); // TODO Remove after BrainMD migration
         if ($result) {
             $this->_getSession()->addSuccess('Product has been successfully unlinked from Rise LMS.');
-        } else {
-            $this->_getSession()->addError('Product could not be successfully unlinked from Rise LMS.');
+        }
+
+        $result = $this->_unlinkProductService->unlinkProduct($product->getData(Swarming_RiseLms_Model_Product_Type::ATTRIBUTE_COURSE_UUID), $storeId);
+        if ($result) {
+            $this->_getSession()->addSuccess('Product has been successfully unlinked from Rise LMS.');
         }
     }
 }

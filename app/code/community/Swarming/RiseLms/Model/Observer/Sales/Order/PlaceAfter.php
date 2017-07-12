@@ -52,7 +52,7 @@ class Swarming_RiseLms_Model_Observer_Sales_Order_PlaceAfter
 
         $data = array(
             'user' => $this->_prepareUserData($order),
-            'product_ids' => $this->_orderHelper->getRiseLmsProductIds($order), // TODO
+            'product_ids' => $this->_orderHelper->getRiseLmsProductIds($order), // TODO Remove after BrainMD migration
             'product_uuids' => $riseLmsProductUuids
         );
 

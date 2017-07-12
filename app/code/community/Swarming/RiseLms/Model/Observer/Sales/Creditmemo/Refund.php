@@ -52,7 +52,7 @@ class Swarming_RiseLms_Model_Observer_Sales_Creditmemo_Refund
 
         $data = array(
             'email' => $creditmemo->getOrder()->getCustomerEmail(),
-            'product_ids' => $this->_creditmemoHelper->getRiseLmsProductIds($creditmemo), // TODO
+            'product_ids' => $this->_creditmemoHelper->getRiseLmsProductIds($creditmemo), // TODO Remove after BrainMD migration
             'product_uuids' => $riseLmsProductUuids
         );
 
