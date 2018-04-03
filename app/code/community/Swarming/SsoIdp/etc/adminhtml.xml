@@ -9,7 +9,7 @@
                             <config>
                                 <children>
                                     <swarming_ssoidp translate="title">
-                                        <title>Rise LMS Single Sign On</title>
+                                        <title>Sarus Single Sign On</title>
                                     </swarming_ssoidp>
                                 </children>
                             </config>

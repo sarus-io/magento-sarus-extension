@@ -33,7 +33,7 @@ class Swarming_Sarus_Model_Observer_Checkout_AllowGuest
             return;
         }
 
-        if ($this->_quoteHelper->hasRiseProduct($quote)) {
+        if ($this->_quoteHelper->hasSarusProduct($quote)) {
             $result->setIsAllowed(false);
         }
     }

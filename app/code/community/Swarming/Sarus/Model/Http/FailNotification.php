@@ -22,7 +22,7 @@ class Swarming_Sarus_Model_Http_FailNotification
      */
     public function notify($path, $data, $response, $storeId = null)
     {
-        $subject = 'Connection to Rise LMS could not be established';
+        $subject = 'Connection to Sarus could not be established';
         $body = $this->prepEmailBody(
             $subject,
             array(
@@ -76,7 +76,7 @@ class Swarming_Sarus_Model_Http_FailNotification
      */
     protected function prepEmailBody($notificationLabel, array $notificationData)
     {
-        $body = '<h3>Magento to Rise LMS status - ' . $notificationLabel . '</h3>';
+        $body = '<h3>Magento to Sarus status - ' . $notificationLabel . '</h3>';
         $body .= '<p>';
         foreach ($notificationData as $key => $value)
         {

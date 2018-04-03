@@ -4,7 +4,7 @@
         <report>
             <children>
                 <swarming_sarus translate="title">
-                    <title>Rise LMS Submissions</title>
+                    <title>Sarus Submissions</title>
                     <action>adminhtml/sarus_submission/index</action>
                     <sort_order>999</sort_order>
                 </swarming_sarus>
@@ -18,7 +18,7 @@
                     <report>
                         <children>
                             <swarming_sarus translate="title">
-                                <title>Rise LMS Submission</title>
+                                <title>Sarus Submission</title>
                             </swarming_sarus>
                         </children>
                     </report>
@@ -27,10 +27,10 @@
                             <config>
                                 <children>
                                     <swarming_sarus translate="title">
-                                        <title>Rise LMS General</title>
+                                        <title>Sarus General</title>
                                     </swarming_sarus>
                                     <!--<sarus_singlesignon translate="title">-->
-                                        <!--<title>Rise LMS Single Sign On</title>-->
+                                        <!--<title>Sarus Single Sign On</title>-->
                                     <!--</sarus_singlesignon>-->
                                 </children>
                             </config>

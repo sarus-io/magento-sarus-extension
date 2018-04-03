@@ -16,10 +16,10 @@ class Swarming_Sarus_Helper_Quote
      * @param Mage_Sales_Model_Quote $quote
      * @return bool
      */
-    public function hasRiseProduct($quote)
+    public function hasSarusProduct($quote)
     {
         if (!$quote->hasData('has_sarus_product')) {
-            $quote->setData('has_sarus_product', $this->_hasRiseProduct($quote));
+            $quote->setData('has_sarus_product', $this->_hasSarusProduct($quote));
         }
 
         return $quote->getData('has_sarus_product');
@@ -29,13 +29,13 @@ class Swarming_Sarus_Helper_Quote
      * @param Mage_Sales_Model_Quote $quote
      * @return bool
      */
-    protected function _hasRiseProduct($quote)
+    protected function _hasSarusProduct($quote)
     {
         $result = false;
 
         /** @var Mage_Sales_Model_Quote_Item $quoteItem */
         foreach ($quote->getAllVisibleItems() as $quoteItem) {
-            if ($this->hasQuoteItemRiseProduct($quoteItem)) {
+            if ($this->hasQuoteItemSarusProduct($quoteItem)) {
                 $result = true;
                 break;
             }
@@ -48,10 +48,10 @@ class Swarming_Sarus_Helper_Quote
      * @param Mage_Sales_Model_Quote_Item $quoteItem
      * @return bool
      */
-    public function hasQuoteItemRiseProduct($quoteItem)
+    public function hasQuoteItemSarusProduct($quoteItem)
     {
         return $quoteItem->getChildren()
-            ? $this->_hasChildItemsRiseProduct($quoteItem)
+            ? $this->_hasChildItemsSarusProduct($quoteItem)
             : $this->_productHelper->isSarus($quoteItem->getProduct());
     }
 
@@ -59,7 +59,7 @@ class Swarming_Sarus_Helper_Quote
      * @param Mage_Sales_Model_Quote_Item $quoteItem
      * @return bool
      */
-    protected function _hasChildItemsRiseProduct($quoteItem)
+    protected function _hasChildItemsSarusProduct($quoteItem)
     {
         $result = false;
         /** @var Mage_Sales_Model_Quote_Item $childItem */

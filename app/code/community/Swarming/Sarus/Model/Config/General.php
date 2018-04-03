@@ -30,7 +30,7 @@ class Swarming_Sarus_Model_Config_General
      * @param int|string|null $storeId
      * @return string
      */
-    public function getRiseBaseUrl($storeId = null)
+    public function getSarusBaseUrl($storeId = null)
     {
         return rtrim(Mage::getStoreConfig(self::XML_PATH_BASE_URL, $storeId), '/');
     }

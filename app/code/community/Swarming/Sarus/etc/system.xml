@@ -8,7 +8,7 @@
     </tabs>
     <sections>
         <swarming_sarus translate="label">
-            <label>Rise LMS</label>
+            <label>Sarus</label>
             <tab>swarming</tab>
             <frontend_type>text</frontend_type>
             <sort_order>1000</sort_order>
@@ -43,8 +43,8 @@
                             <show_in_store>0</show_in_store>
                         </my_courses>
                         <rise_base_url translate="label comment">
-                            <label>Rise LMS Base URL</label>
-                            <comment>Base URL for Rise LMS install. i.e. http://mycompany.sarus.com</comment>
+                            <label>Sarus Base URL</label>
+                            <comment>Base URL for Sarus install. i.e. http://mycompany.sarus.io</comment>
                             <frontend_type>text</frontend_type>
                             <sort_order>30</sort_order>
                             <show_in_default>1</show_in_default>
@@ -63,7 +63,7 @@
                     <fields>
                         <base_url translate="label comment">
                             <label>API Base URL</label>
-                            <comment>Base URL for Rise LMS API. i.e. https://api.sarus.com</comment>
+                            <comment>Base URL for Sarus API. i.e. https://api.sarus.io</comment>
                             <frontend_type>text</frontend_type>
                             <sort_order>10</sort_order>
                             <show_in_default>1</show_in_default>

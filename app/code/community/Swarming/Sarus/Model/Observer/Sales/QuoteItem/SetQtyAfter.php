@@ -33,8 +33,8 @@ class Swarming_Sarus_Model_Observer_Sales_QuoteItem_SetQtyAfter
             return;
         }
 
-        if ($this->_quoteHelper->hasQuoteItemRiseProduct($quoteItem)) {
-            // TODO add message to user if they try to add more then 1 Rise LMS Prod.
+        if ($this->_quoteHelper->hasQuoteItemSarusProduct($quoteItem)) {
+            // TODO add message to user if they try to add more then 1 Sarus Prod.
             $quoteItem->setData('qty', 1);
         }
     }

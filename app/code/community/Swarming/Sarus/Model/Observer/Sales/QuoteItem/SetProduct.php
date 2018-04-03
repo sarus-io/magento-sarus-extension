@@ -17,9 +17,9 @@ class Swarming_Sarus_Model_Observer_Sales_QuoteItem_SetProduct
             return;
         }
 
-        $courseUuid = $product->getRiseCourseUuid();
+        $courseUuid = $product->getSarusCourseUuid();
         if ($courseUuid) {
-            $quoteItem->setRiseCourseUuid($courseUuid);
+            $quoteItem->setSarusCourseUuid($courseUuid);
         }
     }
 }

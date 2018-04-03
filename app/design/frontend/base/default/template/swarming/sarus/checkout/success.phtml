@@ -1,10 +1,10 @@
 <?php
 ?>
 <?php
-	if ($this->getOrderHasRiseProduct()) {
+	if ($this->getOrderHasSarusProduct()) {
 		$sarusSuccessBlock = $this->getLayout()->createBlock('cms/block')->setBlockId('sarus_success_block');
 
 		echo $sarusSuccessBlock->toHtml() ?:
-            Mage::helper('swarming_sarus')->__('Click here to view <a href="%s">My Courses</a>', $this->getRiseProductsUrl());
+            Mage::helper('swarming_sarus')->__('Click here to view <a href="%s">My Courses</a>', $this->getSarusProductsUrl());
 	}
 ?>

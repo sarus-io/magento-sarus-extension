@@ -31,7 +31,7 @@ class Swarming_Sarus_Adminhtml_Sarus_SubmissionController extends Mage_Adminhtml
 
     public function indexAction()
     {
-        $this->_title($this->__('Rise LMS Submissions'));
+        $this->_title($this->__('Sarus Submissions'));
 
         $this->loadLayout();
         $this->renderLayout();

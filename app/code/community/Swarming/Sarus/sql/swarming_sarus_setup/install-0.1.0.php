@@ -36,7 +36,7 @@ $submissionQueueTable = $installer->getConnection()
     ->addColumn('submission_time', Varien_Db_Ddl_Table::TYPE_TIMESTAMP, null, array(
         'nullable'  => false,
         'default' => Varien_Db_Ddl_Table::TIMESTAMP_INIT_UPDATE
-    ), 'Time of submission to Rise LMS')
+    ), 'Time of submission to Sarus')
     ->addColumn('success', Varien_Db_Ddl_Table::TYPE_BOOLEAN, null, array(
         'nullable'  => false,
         'default' => false
@@ -59,7 +59,7 @@ $submissionQueueTable = $installer->getConnection()
         array('success'),
         array('type' => Varien_Db_Adapter_Interface::INDEX_TYPE_INDEX)
     )
-    ->setComment('Rise LMS resubmission log table');
+    ->setComment('Sarus resubmission log table');
 $installer->getConnection()->createTable($submissionQueueTable);
 
 
@@ -90,10 +90,10 @@ foreach ($attributes as $attributeCode) {
 $installer->addAttribute(Mage_Catalog_Model_Product::ENTITY, 'rise_course_uuid', array(
     'type' => 'varchar',
     'input' => 'text',
-    'label' => 'Rise Course UUID',
+    'label' => 'Sarus Course UUID',
     'required' => true,
     'user_defined' => true,
-    'note' => 'Unique Identifier for Rise LMS specific courses',
+    'note' => 'Unique Identifier for Sarus specific courses',
     'global' => Mage_Catalog_Model_Resource_Eav_Attribute::SCOPE_GLOBAL,
     'visible' => true,
 ));
@@ -109,13 +109,13 @@ $installer = new Mage_Sales_Model_Resource_Setup('core_setup');
 $installer->addAttribute('quote_item', 'rise_course_uuid', array(
     'type' => 'varchar',
     'required' => false,
-    'comment' => 'Unique Identifier for Rise LMS specific courses',
+    'comment' => 'Unique Identifier for Sarus specific courses',
     'grid' => false,
 ));
 $installer->addAttribute('order_item', 'rise_course_uuid', array(
     'type' => 'varchar',
     'required' => false,
-    'comment' => 'Unique Identifier for Rise LMS specific courses',
+    'comment' => 'Unique Identifier for Sarus specific courses',
     'grid' => false,
 ));
 

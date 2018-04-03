@@ -68,6 +68,6 @@ class Swarming_Sarus_Block_Courses extends Mage_Customer_Block_Account_Dashboard
      */
     public function getCourseLink($courseData)
     {
-        return $this->_configGeneral->getRiseBaseUrl() . '/e/' . $courseData['course_uuid'];
+        return $this->_configGeneral->getSarusBaseUrl() . '/e/' . $courseData['course_uuid'];
     }
 }

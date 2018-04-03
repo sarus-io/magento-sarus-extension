@@ -70,12 +70,12 @@ class Swarming_Sarus_Model_Observer_Catalog_ProductDeleteBefore
     {
         $result = $this->_unlinkProductService->unlinkProduct($product->getId(), $storeId); // TODO Remove after BrainMD migration
         if ($result) {
-            $this->_getSession()->addSuccess('Product has been successfully unlinked from Rise LMS.');
+            $this->_getSession()->addSuccess('Product has been successfully unlinked from Sarus.');
         }
 
         $result = $this->_unlinkProductService->unlinkProduct($product->getData(Swarming_Sarus_Model_Product_Type::ATTRIBUTE_COURSE_UUID), $storeId);
         if ($result) {
-            $this->_getSession()->addSuccess('Product has been successfully unlinked from Rise LMS.');
+            $this->_getSession()->addSuccess('Product has been successfully unlinked from Sarus.');
         }
     }
 }
