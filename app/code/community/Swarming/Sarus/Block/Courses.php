@@ -1,27 +1,27 @@
 <?php
 
-class Swarming_RiseLms_Block_Courses extends Mage_Customer_Block_Account_Dashboard
+class Swarming_Sarus_Block_Courses extends Mage_Customer_Block_Account_Dashboard
 {
     /**
-     * @var Swarming_RiseLms_Model_Config_General
+     * @var Swarming_Sarus_Model_Config_General
      */
     protected $_configGeneral;
 
     /**
-     * @var Swarming_RiseLms_Model_Service_Courses
+     * @var Swarming_Sarus_Model_Service_Courses
      */
     protected $_courseService;
 
     /**
-     * @var Swarming_RiseLms_Model_Service_Token
+     * @var Swarming_Sarus_Model_Service_Token
      */
     protected $_tokenService;
 
     public function _construct()
     {
-        $this->_configGeneral = Mage::getModel('swarming_riselms/config_general');
-        $this->_courseService = Mage::getModel('swarming_riselms/service_courses');
-        $this->_tokenService  = Mage::getModel('swarming_riselms/service_token');
+        $this->_configGeneral = Mage::getModel('swarming_sarus/config_general');
+        $this->_courseService = Mage::getModel('swarming_sarus/service_courses');
+        $this->_tokenService  = Mage::getModel('swarming_sarus/service_token');
 
         return parent::_construct();
     }

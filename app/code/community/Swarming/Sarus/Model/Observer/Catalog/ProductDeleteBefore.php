@@ -1,19 +1,19 @@
 <?php
 
-class Swarming_RiseLms_Model_Observer_Catalog_ProductDeleteBefore
+class Swarming_Sarus_Model_Observer_Catalog_ProductDeleteBefore
 {
     /**
-     * @var Swarming_RiseLms_Model_Config_General
+     * @var Swarming_Sarus_Model_Config_General
      */
     protected $_configGeneral;
 
     /**
-     * @var Swarming_RiseLms_Helper_Product
+     * @var Swarming_Sarus_Helper_Product
      */
     protected $_productHelper;
 
     /**
-     * @var Swarming_RiseLms_Model_Service_UnlinkProduct
+     * @var Swarming_Sarus_Model_Service_UnlinkProduct
      */
     protected $_unlinkProductService;
 
@@ -24,9 +24,9 @@ class Swarming_RiseLms_Model_Observer_Catalog_ProductDeleteBefore
 
     public function __construct()
     {
-        $this->_configGeneral = Mage::getModel('swarming_riselms/config_general');
-        $this->_productHelper = Mage::helper('swarming_riselms/product');
-        $this->_unlinkProductService = Mage::getModel('swarming_riselms/service_unlinkProduct');
+        $this->_configGeneral = Mage::getModel('swarming_sarus/config_general');
+        $this->_productHelper = Mage::helper('swarming_sarus/product');
+        $this->_unlinkProductService = Mage::getModel('swarming_sarus/service_unlinkProduct');
         $this->_app = Mage::app();
     }
 
@@ -47,7 +47,7 @@ class Swarming_RiseLms_Model_Observer_Catalog_ProductDeleteBefore
         /** @var Mage_Catalog_Model_Product $product */
         $product = $observer->getData('product');
 
-        if (!$this->_productHelper->isRiseLms($product)) {
+        if (!$this->_productHelper->isSarus($product)) {
             return;
         }
 
@@ -73,7 +73,7 @@ class Swarming_RiseLms_Model_Observer_Catalog_ProductDeleteBefore
             $this->_getSession()->addSuccess('Product has been successfully unlinked from Rise LMS.');
         }
 
-        $result = $this->_unlinkProductService->unlinkProduct($product->getData(Swarming_RiseLms_Model_Product_Type::ATTRIBUTE_COURSE_UUID), $storeId);
+        $result = $this->_unlinkProductService->unlinkProduct($product->getData(Swarming_Sarus_Model_Product_Type::ATTRIBUTE_COURSE_UUID), $storeId);
         if ($result) {
             $this->_getSession()->addSuccess('Product has been successfully unlinked from Rise LMS.');
         }

@@ -1,41 +1,41 @@
 <?xml version="1.0"?>
 <config>
     <modules>
-        <Swarming_RiseLms>
+        <Swarming_Sarus>
             <version>0.1.0</version>
-        </Swarming_RiseLms>
+        </Swarming_Sarus>
     </modules>
     <global>
         <models>
-            <swarming_riselms>
-                <class>Swarming_RiseLms_Model</class>
-                <resourceModel>swarming_riselms_resource</resourceModel>
-            </swarming_riselms>
-            <swarming_riselms_resource>
-                <class>Swarming_RiseLms_Model_Resource</class>
+            <swarming_sarus>
+                <class>Swarming_Sarus_Model</class>
+                <resourceModel>swarming_sarus_resource</resourceModel>
+            </swarming_sarus>
+            <swarming_sarus_resource>
+                <class>Swarming_Sarus_Model_Resource</class>
                 <entities>
-                    <riselms_submission>
-                        <table>riselms_submission</table>
-                    </riselms_submission>
+                    <sarus_submission>
+                        <table>sarus_submission</table>
+                    </sarus_submission>
                 </entities>
-            </swarming_riselms_resource>
+            </swarming_sarus_resource>
         </models>
         <blocks>
-            <swarming_riselms>
-                <class>Swarming_RiseLms_Block</class>
-            </swarming_riselms>
+            <swarming_sarus>
+                <class>Swarming_Sarus_Block</class>
+            </swarming_sarus>
         </blocks>
         <helpers>
-            <swarming_riselms>
-                <class>Swarming_RiseLms_Helper</class>
-            </swarming_riselms>
+            <swarming_sarus>
+                <class>Swarming_Sarus_Helper</class>
+            </swarming_sarus>
         </helpers>
         <resources>
-            <swarming_riselms_setup>
+            <swarming_sarus_setup>
                 <setup>
-                    <module>Swarming_RiseLms</module>
+                    <module>Swarming_Sarus</module>
                 </setup>
-            </swarming_riselms_setup>
+            </swarming_sarus_setup>
         </resources>
         <fieldsets>
             <sales_convert_quote_item>
@@ -52,14 +52,14 @@
         <catalog>
             <product>
                 <type>
-                    <riselms translate="label">
+                    <sarus translate="label">
                         <label>Rise LMS Product</label>
-                        <model>swarming_riselms/product_type</model>
+                        <model>swarming_sarus/product_type</model>
                         <composite>0</composite>
                         <index_priority>25</index_priority>
                         <can_use_qty_decimals>0</can_use_qty_decimals>
                         <is_qty>1</is_qty>
-                    </riselms>
+                    </sarus>
                 </type>
             </product>
         </catalog>
@@ -75,54 +75,54 @@
         <events>
             <checkout_allow_guest>
                 <observers>
-                    <swarming_riselms>
+                    <swarming_sarus>
                         <type>singleton</type>
-                        <class>swarming_riselms/observer_checkout_allowGuest</class>
+                        <class>swarming_sarus/observer_checkout_allowGuest</class>
                         <method>execute</method>
-                    </swarming_riselms>
+                    </swarming_sarus>
                 </observers>
             </checkout_allow_guest>
             <sales_quote_item_set_product>
                 <observers>
-                    <swarming_riselms>
+                    <swarming_sarus>
                         <type>model</type>
-                        <class>swarming_riselms/observer_sales_quoteItem_setProduct</class>
+                        <class>swarming_sarus/observer_sales_quoteItem_setProduct</class>
                         <method>execute</method>
-                    </swarming_riselms>
+                    </swarming_sarus>
                 </observers>
             </sales_quote_item_set_product>
             <sales_quote_item_qty_set_after>
                 <observers>
-                    <riselms_product>
-                        <class>swarming_riselms/observer_sales_quoteItem_setQtyAfter</class>
+                    <sarus_product>
+                        <class>swarming_sarus/observer_sales_quoteItem_setQtyAfter</class>
                         <method>execute</method>
-                    </riselms_product>
+                    </sarus_product>
                 </observers>
             </sales_quote_item_qty_set_after>
             <sales_order_place_after>
                 <observers>
-                    <swarming_riselms>
+                    <swarming_sarus>
                         <type>singleton</type>
-                        <class>swarming_riselms/observer_sales_order_placeAfter</class>
+                        <class>swarming_sarus/observer_sales_order_placeAfter</class>
                         <method>execute</method>
-                    </swarming_riselms>
+                    </swarming_sarus>
                 </observers>
             </sales_order_place_after>
             <sales_order_creditmemo_refund>
                 <observers>
-                    <swarming_riselms>
+                    <swarming_sarus>
                         <type>singleton</type>
-                        <class>swarming_riselms/observer_Sales_Creditmemo_Refund</class>
+                        <class>swarming_sarus/observer_Sales_Creditmemo_Refund</class>
                         <method>execute</method>
-                    </swarming_riselms>
+                    </swarming_sarus>
                 </observers>
             </sales_order_creditmemo_refund>
             <catalog_product_delete_before>
                 <observers>
-                    <swarming_riselms>
-                        <class>swarming_riselms/observer_Catalog_ProductDeleteBefore</class>
+                    <swarming_sarus>
+                        <class>swarming_sarus/observer_Catalog_ProductDeleteBefore</class>
                         <method>execute</method>
-                    </swarming_riselms>
+                    </swarming_sarus>
                 </observers>
             </catalog_product_delete_before>
         </events>
@@ -130,36 +130,36 @@
     <frontend>
         <layout>
             <updates>
-                <swarming_riselms>
-                    <file>swarming/riselms.xml</file>
-                </swarming_riselms>
+                <swarming_sarus>
+                    <file>swarming/sarus.xml</file>
+                </swarming_sarus>
             </updates>
         </layout>
         <routers>
-            <swarming_riselms>
+            <swarming_sarus>
                 <use>standard</use>
                 <args>
-                    <module>Swarming_RiseLms</module>
-                    <frontName>riselms</frontName>
+                    <module>Swarming_Sarus</module>
+                    <frontName>sarus</frontName>
                 </args>
-            </swarming_riselms>
+            </swarming_sarus>
         </routers>
     </frontend>
     <crontab>
         <jobs>
-            <riselms_unsynced_products_catalog>
+            <sarus_unsynced_products_catalog>
                 <schedule><cron_expr>*/10 * * * *</cron_expr></schedule>
                 <run>
-                    <model>swarming_riselms/cron_submissionQueue::execute</model>
+                    <model>swarming_sarus/cron_submissionQueue::execute</model>
                 </run>
-            </riselms_unsynced_products_catalog>
+            </sarus_unsynced_products_catalog>
         </jobs>
     </crontab>
     <adminhtml>
         <layout>
             <updates>
                 <swarming_buzzi>
-                    <file>swarming/riselms.xml</file>
+                    <file>swarming/sarus.xml</file>
                 </swarming_buzzi>
             </updates>
         </layout>
@@ -169,14 +169,14 @@
             <adminhtml>
                 <args>
                     <modules>
-                        <Swarming_RiseLms before="-">Swarming_RiseLms_Adminhtml</Swarming_RiseLms>
+                        <Swarming_Sarus before="-">Swarming_Sarus_Adminhtml</Swarming_Sarus>
                     </modules>
                 </args>
             </adminhtml>
         </routers>
     </admin>
     <default>
-        <swarming_riselms>
+        <swarming_sarus>
             <general>
                 <enabled>1</enabled>
                 <my_courses>1</my_courses>
@@ -184,8 +184,8 @@
             <api>
                 <auth_token backend_model="adminhtml/system_config_backend_encrypted"/>
                 <max_time_resend>5</max_time_resend>
-                <base_url>https://api.riselms.com</base_url>
+                <base_url>https://api.sarus.com</base_url>
             </api>
-        </swarming_riselms>
+        </swarming_sarus>
     </default>
 </config>

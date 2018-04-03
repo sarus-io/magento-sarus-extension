@@ -2,9 +2,9 @@
 ?>
 <?php
 	if ($this->getOrderHasRiseProduct()) {
-		$riselmsSuccessBlock = $this->getLayout()->createBlock('cms/block')->setBlockId('riselms_success_block');
+		$sarusSuccessBlock = $this->getLayout()->createBlock('cms/block')->setBlockId('sarus_success_block');
 
-		echo $riselmsSuccessBlock->toHtml() ?:
-            Mage::helper('swarming_riselms')->__('Click here to view <a href="%s">My Courses</a>', $this->getRiseProductsUrl());
+		echo $sarusSuccessBlock->toHtml() ?:
+            Mage::helper('swarming_sarus')->__('Click here to view <a href="%s">My Courses</a>', $this->getRiseProductsUrl());
 	}
 ?>

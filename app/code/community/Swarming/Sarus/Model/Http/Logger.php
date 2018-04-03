@@ -1,11 +1,11 @@
 <?php
 
-class Swarming_RiseLms_Model_Http_Logger
+class Swarming_Sarus_Model_Http_Logger
 {
     /**
      * @var string
      */
-    protected $_fileName = 'riselms_api_status.log';
+    protected $_fileName = 'sarus_api_status.log';
 
     /**
      * @param string $path

@@ -9,7 +9,7 @@ $this->startSetup();
  * Create Resubmission log table and columns
  */
 $submissionQueueTable = $installer->getConnection()
-    ->newTable($installer->getTable('swarming_riselms/riselms_submission'))
+    ->newTable($installer->getTable('swarming_sarus/sarus_submission'))
     ->addColumn('entity_id', Varien_Db_Ddl_Table::TYPE_INTEGER, null, array(
         'identity'  => true,
         'unsigned'  => true,
@@ -45,17 +45,17 @@ $submissionQueueTable = $installer->getConnection()
         'nullable'  => false,
     ), 'Error message')
     ->addIndex(
-        $installer->getIdxName($installer->getTable('swarming_riselms/riselms_submission'), array('store_id'), Varien_Db_Adapter_Interface::INDEX_TYPE_INDEX),
+        $installer->getIdxName($installer->getTable('swarming_sarus/sarus_submission'), array('store_id'), Varien_Db_Adapter_Interface::INDEX_TYPE_INDEX),
         array('store_id'),
         array('type' => Varien_Db_Adapter_Interface::INDEX_TYPE_INDEX)
     )
     ->addIndex(
-        $installer->getIdxName($installer->getTable('swarming_riselms/riselms_submission'), array('counter'), Varien_Db_Adapter_Interface::INDEX_TYPE_INDEX),
+        $installer->getIdxName($installer->getTable('swarming_sarus/sarus_submission'), array('counter'), Varien_Db_Adapter_Interface::INDEX_TYPE_INDEX),
         array('store_id'),
         array('type' => Varien_Db_Adapter_Interface::INDEX_TYPE_INDEX)
     )
     ->addIndex(
-        $installer->getIdxName($installer->getTable('swarming_riselms/riselms_submission'), array('success'), Varien_Db_Adapter_Interface::INDEX_TYPE_INDEX),
+        $installer->getIdxName($installer->getTable('swarming_sarus/sarus_submission'), array('success'), Varien_Db_Adapter_Interface::INDEX_TYPE_INDEX),
         array('success'),
         array('type' => Varien_Db_Adapter_Interface::INDEX_TYPE_INDEX)
     )
@@ -81,8 +81,8 @@ $attributes = array(
 foreach ($attributes as $attributeCode) {
     $applyTo = explode(',', $installer->getAttribute('catalog_product', $attributeCode, 'apply_to'));
 
-    if (!in_array(Swarming_RiseLms_Model_Product_Type::TYPE_CODE, $applyTo)) {
-        $applyTo[] = Swarming_RiseLms_Model_Product_Type::TYPE_CODE;
+    if (!in_array(Swarming_Sarus_Model_Product_Type::TYPE_CODE, $applyTo)) {
+        $applyTo[] = Swarming_Sarus_Model_Product_Type::TYPE_CODE;
         $installer->updateAttribute('catalog_product', $attributeCode, 'apply_to', implode(',', $applyTo));
     }
 }

@@ -1,6 +1,6 @@
 <?php
 
-class Swarming_RiseLms_Model_Observer_Sales_QuoteItem_SetProduct
+class Swarming_Sarus_Model_Observer_Sales_QuoteItem_SetProduct
 {
     /**
      * @param Varien_Event_Observer $observer

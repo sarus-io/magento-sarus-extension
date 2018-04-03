@@ -1,15 +1,15 @@
 <?php
 
-class Swarming_RiseLms_Helper_Quote
+class Swarming_Sarus_Helper_Quote
 {
     /**
-     * @var Swarming_RiseLms_Helper_Product
+     * @var Swarming_Sarus_Helper_Product
      */
     protected $_productHelper;
 
     public function __construct()
     {
-        $this->_productHelper = Mage::helper('swarming_riselms/product');
+        $this->_productHelper = Mage::helper('swarming_sarus/product');
     }
 
     /**
@@ -18,11 +18,11 @@ class Swarming_RiseLms_Helper_Quote
      */
     public function hasRiseProduct($quote)
     {
-        if (!$quote->hasData('has_riselms_product')) {
-            $quote->setData('has_riselms_product', $this->_hasRiseProduct($quote));
+        if (!$quote->hasData('has_sarus_product')) {
+            $quote->setData('has_sarus_product', $this->_hasRiseProduct($quote));
         }
 
-        return $quote->getData('has_riselms_product');
+        return $quote->getData('has_sarus_product');
     }
 
     /**
@@ -52,7 +52,7 @@ class Swarming_RiseLms_Helper_Quote
     {
         return $quoteItem->getChildren()
             ? $this->_hasChildItemsRiseProduct($quoteItem)
-            : $this->_productHelper->isRiseLms($quoteItem->getProduct());
+            : $this->_productHelper->isSarus($quoteItem->getProduct());
     }
 
     /**
@@ -64,7 +64,7 @@ class Swarming_RiseLms_Helper_Quote
         $result = false;
         /** @var Mage_Sales_Model_Quote_Item $childItem */
         foreach ($quoteItem->getChildren() as $childItem) {
-            if ($this->_productHelper->isRiseLms($childItem->getProduct())) {
+            if ($this->_productHelper->isSarus($childItem->getProduct())) {
                 $result = true;
                 break;
             }

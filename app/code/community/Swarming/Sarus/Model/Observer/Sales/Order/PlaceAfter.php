@@ -1,35 +1,35 @@
 <?php
 
-class Swarming_RiseLms_Model_Observer_Sales_Order_PlaceAfter
+class Swarming_Sarus_Model_Observer_Sales_Order_PlaceAfter
 {
     /**
-     * @var Swarming_RiseLms_Model_Config_General
+     * @var Swarming_Sarus_Model_Config_General
      */
     protected $_configGeneral;
 
     /**
-     * @var Swarming_RiseLms_Helper_Order
+     * @var Swarming_Sarus_Helper_Order
      */
     protected $_orderHelper;
 
     /**
-     * @var Swarming_RiseLms_Model_Service_OrderComplete
+     * @var Swarming_Sarus_Model_Service_OrderComplete
      */
     protected $_orderCompleteService;
 
     public function __construct()
     {
-        $this->_configGeneral = Mage::getModel('swarming_riselms/config_general');
-        $this->_orderHelper = Mage::helper('swarming_riselms/order');
-        $this->_orderCompleteService = Mage::getModel('swarming_riselms/service_orderComplete');
+        $this->_configGeneral = Mage::getModel('swarming_sarus/config_general');
+        $this->_orderHelper = Mage::helper('swarming_sarus/order');
+        $this->_orderCompleteService = Mage::getModel('swarming_sarus/service_orderComplete');
     }
 
     /**
-     * @return Swarming_RiseLms_Model_Submission
+     * @return Swarming_Sarus_Model_Submission
      */
     public function _createSubmission()
     {
-        return Mage::getModel('swarming_riselms/submission');
+        return Mage::getModel('swarming_sarus/submission');
     }
 
     /**
@@ -45,15 +45,15 @@ class Swarming_RiseLms_Model_Observer_Sales_Order_PlaceAfter
             return;
         }
 
-        $riseLmsProductUuids = $this->_orderHelper->getRiseLmsProductUuids($order);
-        if (empty($riseLmsProductUuids)){
+        $sarusProductUuids = $this->_orderHelper->getSarusProductUuids($order);
+        if (empty($sarusProductUuids)){
             return;
         }
 
         $data = array(
             'user' => $this->_prepareUserData($order),
-            'product_ids' => $this->_orderHelper->getRiseLmsProductIds($order), // TODO Remove after BrainMD migration
-            'product_uuids' => $riseLmsProductUuids
+            'product_ids' => $this->_orderHelper->getSarusProductIds($order), // TODO Remove after BrainMD migration
+            'product_uuids' => $sarusProductUuids
         );
 
         $submission = $this->_createSubmission();

@@ -1,16 +1,16 @@
 <?php
 
-class Swarming_RiseLms_Model_Config_Api
+class Swarming_Sarus_Model_Config_Api
 {
-    const XML_PATH_BASE_URL = 'swarming_riselms/api/base_url';
+    const XML_PATH_BASE_URL = 'swarming_sarus/api/base_url';
 
-    const XML_PATH_AUTH_TOKEN = 'swarming_riselms/api/auth_token';
+    const XML_PATH_AUTH_TOKEN = 'swarming_sarus/api/auth_token';
 
-    const XML_PATH_DEBUG = 'swarming_riselms/api/debug';
+    const XML_PATH_DEBUG = 'swarming_sarus/api/debug';
 
-    const XML_PATH_NOTIFICATION_RECIPIENT = 'swarming_riselms/api/notification_recipient';
+    const XML_PATH_NOTIFICATION_RECIPIENT = 'swarming_sarus/api/notification_recipient';
 
-    const XML_PATH_MAX_TIME_RESEND = 'swarming_riselms/api/max_time_resend';
+    const XML_PATH_MAX_TIME_RESEND = 'swarming_sarus/api/max_time_resend';
 
     /**
      * @param int|string|null $storeId

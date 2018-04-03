@@ -1,25 +1,25 @@
 <?php
 
-class Swarming_RiseLms_Model_Observer_Sales_QuoteItem_SetQtyAfter
+class Swarming_Sarus_Model_Observer_Sales_QuoteItem_SetQtyAfter
 {
     /**
-     * @var Swarming_RiseLms_Model_Config_General
+     * @var Swarming_Sarus_Model_Config_General
      */
     protected $_configGeneral;
 
     /**
-     * @var Swarming_RiseLms_Helper_Quote
+     * @var Swarming_Sarus_Helper_Quote
      */
     protected $_quoteHelper;
 
     public function __construct()
     {
-        $this->_configGeneral = Mage::getModel('swarming_riselms/config_general');
-        $this->_quoteHelper = Mage::helper('swarming_riselms/quote');
+        $this->_configGeneral = Mage::getModel('swarming_sarus/config_general');
+        $this->_quoteHelper = Mage::helper('swarming_sarus/quote');
     }
 
     /**
-     * Make sure the riselms product quantity is 1
+     * Make sure the sarus product quantity is 1
      *
      * @param Varien_Event_Observer $observer
      * @return void

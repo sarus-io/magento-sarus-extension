@@ -1,15 +1,15 @@
 <?php
 
-class Swarming_RiseLms_ListController extends Mage_Core_Controller_Front_Action
+class Swarming_Sarus_ListController extends Mage_Core_Controller_Front_Action
 {
     /**
-     * @var Swarming_RiseLms_Model_Config_General
+     * @var Swarming_Sarus_Model_Config_General
      */
     protected $_configGeneral;
 
     protected function _construct()
     {
-        $this->_configGeneral = Mage::getModel('swarming_riselms/config_general');
+        $this->_configGeneral = Mage::getModel('swarming_sarus/config_general');
         parent::_construct();
     }
 

@@ -1,35 +1,35 @@
 <?php
 
-class Swarming_RiseLms_Model_Observer_Sales_Creditmemo_Refund
+class Swarming_Sarus_Model_Observer_Sales_Creditmemo_Refund
 {
     /**
-     * @var Swarming_RiseLms_Model_Config_General
+     * @var Swarming_Sarus_Model_Config_General
      */
     protected $_configGeneral;
 
     /**
-     * @var Swarming_RiseLms_Helper_Creditmemo
+     * @var Swarming_Sarus_Helper_Creditmemo
      */
     protected $_creditmemoHelper;
 
     /**
-     * @var Swarming_RiseLms_Model_Service_Creditmemo
+     * @var Swarming_Sarus_Model_Service_Creditmemo
      */
     protected $_creditmemoService;
 
     public function __construct()
     {
-        $this->_configGeneral = Mage::getModel('swarming_riselms/config_general');
-        $this->_creditmemoHelper = Mage::helper('swarming_riselms/creditmemo');
-        $this->_creditmemoService = Mage::getModel('swarming_riselms/service_creditmemo');
+        $this->_configGeneral = Mage::getModel('swarming_sarus/config_general');
+        $this->_creditmemoHelper = Mage::helper('swarming_sarus/creditmemo');
+        $this->_creditmemoService = Mage::getModel('swarming_sarus/service_creditmemo');
     }
 
     /**
-     * @return Swarming_RiseLms_Model_Submission
+     * @return Swarming_Sarus_Model_Submission
      */
     public function _createSubmission()
     {
-        return Mage::getModel('swarming_riselms/submission');
+        return Mage::getModel('swarming_sarus/submission');
     }
 
     /**
@@ -45,15 +45,15 @@ class Swarming_RiseLms_Model_Observer_Sales_Creditmemo_Refund
             return;
         }
 
-        $riseLmsProductUuids = $this->_creditmemoHelper->getRiseLmsProductUuids($creditmemo);
-        if (empty($riseLmsProductUuids)){
+        $sarusProductUuids = $this->_creditmemoHelper->getSarusProductUuids($creditmemo);
+        if (empty($sarusProductUuids)){
             return;
         }
 
         $data = array(
             'email' => $creditmemo->getOrder()->getCustomerEmail(),
-            'product_ids' => $this->_creditmemoHelper->getRiseLmsProductIds($creditmemo), // TODO Remove after BrainMD migration
-            'product_uuids' => $riseLmsProductUuids
+            'product_ids' => $this->_creditmemoHelper->getSarusProductIds($creditmemo), // TODO Remove after BrainMD migration
+            'product_uuids' => $sarusProductUuids
         );
 
         $submission = $this->_createSubmission();

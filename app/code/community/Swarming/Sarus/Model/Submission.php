@@ -18,11 +18,11 @@
  * @method string getErrorMessage()
  * @method $this setErrorMessage(string $errorMessage)
  */
-class Swarming_RiseLms_Model_Submission extends Mage_Core_Model_Abstract
+class Swarming_Sarus_Model_Submission extends Mage_Core_Model_Abstract
 {
     protected function _construct()
     {
-        $this->_init('swarming_riselms/submission');
+        $this->_init('swarming_sarus/submission');
     }
 
     /**

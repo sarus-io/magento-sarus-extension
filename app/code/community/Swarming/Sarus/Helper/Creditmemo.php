@@ -1,24 +1,24 @@
 <?php
 
-class Swarming_RiseLms_Helper_Creditmemo
+class Swarming_Sarus_Helper_Creditmemo
 {
     /**
-     * @var Swarming_RiseLms_Helper_Product
+     * @var Swarming_Sarus_Helper_Product
      */
     protected $_productHelper;
 
     public function __construct()
     {
-        $this->_productHelper = Mage::helper('swarming_riselms/product');
+        $this->_productHelper = Mage::helper('swarming_sarus/product');
     }
 
     /**
      * @param Mage_Sales_Model_Order_Creditmemo $creditmemo
      * @return array
      */
-    public function getRiseLmsProductIds($creditmemo)
+    public function getSarusProductIds($creditmemo)
     {
-        $riseLmsProductIds = [];
+        $sarusProductIds = [];
 
         /** @var Mage_Sales_Model_Order_Creditmemo_Item $item */
         foreach ($creditmemo->getAllItems() as $item) {
@@ -26,19 +26,19 @@ class Swarming_RiseLms_Helper_Creditmemo
             if ($product->isComposite()) {
                 continue;
             }
-            if ($this->_productHelper->isRiseLms($product)) {
-                $riseLmsProductIds[] = $product->getId();
+            if ($this->_productHelper->isSarus($product)) {
+                $sarusProductIds[] = $product->getId();
             }
         }
 
-        return $riseLmsProductIds;
+        return $sarusProductIds;
     }
 
     /**
      * @param Mage_Sales_Model_Order_Creditmemo $creditmemo
      * @return array
      */
-    public function getRiseLmsProductUuids($creditmemo)
+    public function getSarusProductUuids($creditmemo)
     {
         $uuids = [];
 
@@ -48,8 +48,8 @@ class Swarming_RiseLms_Helper_Creditmemo
             if ($product->isComposite()) {
                 continue;
             }
-            if ($this->_productHelper->isRiseLms($product)) {
-                $uuids[] = $product->getData(Swarming_RiseLms_Model_Product_Type::ATTRIBUTE_COURSE_UUID);
+            if ($this->_productHelper->isSarus($product)) {
+                $uuids[] = $product->getData(Swarming_Sarus_Model_Product_Type::ATTRIBUTE_COURSE_UUID);
             }
         }
 

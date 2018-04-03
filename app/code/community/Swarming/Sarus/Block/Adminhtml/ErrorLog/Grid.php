@@ -1,11 +1,11 @@
 <?php
 
-class Swarming_RiseLms_Block_Adminhtml_ErrorLog_Grid extends Mage_Adminhtml_Block_Widget_Grid
+class Swarming_Sarus_Block_Adminhtml_ErrorLog_Grid extends Mage_Adminhtml_Block_Widget_Grid
 {
     public function __construct()
     {
         parent::__construct();
-        $this->setId('riselms_submission_grid');
+        $this->setId('sarus_submission_grid');
         $this->setDefaultSort('submission_time');
         $this->setDefaultDir('asc');
         $this->setSaveParametersInSession(true);
@@ -13,11 +13,11 @@ class Swarming_RiseLms_Block_Adminhtml_ErrorLog_Grid extends Mage_Adminhtml_Bloc
     }
 
     /**
-     * @return Swarming_RiseLms_Model_Resource_Submission_Collection
+     * @return Swarming_Sarus_Model_Resource_Submission_Collection
      */
     protected function _createSubmissionCollection()
     {
-        return Mage::getResourceModel('swarming_riselms/submission_collection');
+        return Mage::getResourceModel('swarming_sarus/submission_collection');
     }
 
     /**
@@ -25,7 +25,7 @@ class Swarming_RiseLms_Block_Adminhtml_ErrorLog_Grid extends Mage_Adminhtml_Bloc
      */
     protected function _getActions()
     {
-        return Mage::getModel('swarming_riselms/config_source_apiAction')->toOptionHash();
+        return Mage::getModel('swarming_sarus/config_source_apiAction')->toOptionHash();
     }
 
     /**
@@ -140,7 +140,7 @@ class Swarming_RiseLms_Block_Adminhtml_ErrorLog_Grid extends Mage_Adminhtml_Bloc
     }
 
     /**
-     * @param Swarming_RiseLms_Model_Submission $row
+     * @param Swarming_Sarus_Model_Submission $row
      * @return string
      */
     public function getRowUrl($row)

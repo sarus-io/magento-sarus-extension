@@ -1,15 +1,15 @@
 <?php
 
-class Swarming_RiseLms_Adminhtml_Riselms_SubmissionController extends Mage_Adminhtml_Controller_Action
+class Swarming_Sarus_Adminhtml_Sarus_SubmissionController extends Mage_Adminhtml_Controller_Action
 {
     /**
-     * @var Swarming_RiseLms_Model_Submission_Manager
+     * @var Swarming_Sarus_Model_Submission_Manager
      */
     protected $_submissionManager;
 
     protected function _construct()
     {
-        $this->_submissionManager = Mage::getModel('swarming_riselms/submission_manager');
+        $this->_submissionManager = Mage::getModel('swarming_sarus/submission_manager');
         parent::_construct();
     }
 
@@ -26,7 +26,7 @@ class Swarming_RiseLms_Adminhtml_Riselms_SubmissionController extends Mage_Admin
      */
     protected function _isAllowed()
     {
-        return $this->_getAdminSession()->isAllowed('report/swarming_riselms');
+        return $this->_getAdminSession()->isAllowed('report/swarming_sarus');
     }
 
     public function indexAction()
@@ -72,8 +72,8 @@ class Swarming_RiseLms_Adminhtml_Riselms_SubmissionController extends Mage_Admin
                 Mage::throwException($this->__('Please select Error Log(s).'));
             }
 
-            /** @var Swarming_RiseLms_Model_Submission $submission */
-            $submission = Mage::getModel('swarming_riselms/submission');
+            /** @var Swarming_Sarus_Model_Submission $submission */
+            $submission = Mage::getModel('swarming_sarus/submission');
 
             foreach ($ids as $id) {
                 $submission->load($id);
@@ -104,10 +104,10 @@ class Swarming_RiseLms_Adminhtml_Riselms_SubmissionController extends Mage_Admin
     }
 
     /**
-     * @return Swarming_RiseLms_Block_Adminhtml_ErrorLog_Grid
+     * @return Swarming_Sarus_Block_Adminhtml_ErrorLog_Grid
      */
     protected function _createGridBlock()
     {
-        return $this->getLayout()->createBlock('swarming_riselms/adminhtml_errorLog_grid');
+        return $this->getLayout()->createBlock('swarming_sarus/adminhtml_errorLog_grid');
     }
 }

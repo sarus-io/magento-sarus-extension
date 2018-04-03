@@ -1,33 +1,33 @@
 <?php
 
-class Swarming_RiseLms_Model_Submission_Manager
+class Swarming_Sarus_Model_Submission_Manager
 {
     /**
-     * @var Swarming_RiseLms_Model_Http
+     * @var Swarming_Sarus_Model_Http
      */
     protected $_http;
 
     /**
-     * @var Swarming_RiseLms_Model_Config_Api
+     * @var Swarming_Sarus_Model_Config_Api
      */
     protected $_configApi;
 
     public function __construct()
     {
-        $this->_http = Mage::getModel('swarming_riselms/http');
-        $this->_configApi = Mage::getModel('swarming_riselms/config_api');
+        $this->_http = Mage::getModel('swarming_sarus/http');
+        $this->_configApi = Mage::getModel('swarming_sarus/config_api');
     }
 
     /**
-     * @return Swarming_RiseLms_Model_Resource_Submission_Collection
+     * @return Swarming_Sarus_Model_Resource_Submission_Collection
      */
     protected function _createSubmissionCollection()
     {
-        return Mage::getResourceModel('swarming_riselms/submission_collection');
+        return Mage::getResourceModel('swarming_sarus/submission_collection');
     }
 
     /**
-     * @param Swarming_RiseLms_Model_Submission $submission
+     * @param Swarming_Sarus_Model_Submission $submission
      * @return array|null
      * @throws Mage_Core_Exception
      */
@@ -43,12 +43,12 @@ class Swarming_RiseLms_Model_Submission_Manager
     }
 
     /**
-     * @param Swarming_RiseLms_Model_Resource_Submission_Collection $submissions
+     * @param Swarming_Sarus_Model_Resource_Submission_Collection $submissions
      * @return void
      */
     public function sendSubmissions($submissions)
     {
-        /** @var Swarming_RiseLms_Model_Submission $submission */
+        /** @var Swarming_Sarus_Model_Submission $submission */
         foreach ($submissions as $submission) {
             try {
                 $this->sendSubmission($submission);
@@ -92,7 +92,7 @@ class Swarming_RiseLms_Model_Submission_Manager
     }
 
     /**
-     * @param Swarming_RiseLms_Model_Submission $submission
+     * @param Swarming_Sarus_Model_Submission $submission
      * @param string $message
      * @return void
      */
@@ -104,7 +104,7 @@ class Swarming_RiseLms_Model_Submission_Manager
     }
 
     /**
-     * @param Swarming_RiseLms_Model_Submission $submission
+     * @param Swarming_Sarus_Model_Submission $submission
      * @return void
      */
     protected function _successSubmission($submission)
@@ -116,7 +116,7 @@ class Swarming_RiseLms_Model_Submission_Manager
     }
 
     /**
-     * @param Swarming_RiseLms_Model_Submission $submission
+     * @param Swarming_Sarus_Model_Submission $submission
      * @param string $message
      * @return void
      */

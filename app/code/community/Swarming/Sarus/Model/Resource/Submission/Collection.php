@@ -1,10 +1,10 @@
 <?php
 
-class Swarming_RiseLms_Model_Resource_Submission_Collection extends Mage_Core_Model_Resource_Db_Collection_Abstract
+class Swarming_Sarus_Model_Resource_Submission_Collection extends Mage_Core_Model_Resource_Db_Collection_Abstract
 {
     protected function _construct()
     {
-        $this->_init('swarming_riselms/submission');
+        $this->_init('swarming_sarus/submission');
     }
 
     /**
