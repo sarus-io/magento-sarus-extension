@@ -87,7 +87,7 @@ foreach ($attributes as $attributeCode) {
     }
 }
 
-$installer->addAttribute(Mage_Catalog_Model_Product::ENTITY, 'rise_course_uuid', array(
+$installer->addAttribute(Mage_Catalog_Model_Product::ENTITY, 'sarus_course_uuid', array(
     'type' => 'varchar',
     'input' => 'text',
     'label' => 'Sarus Course UUID',
@@ -106,13 +106,13 @@ $installer->addAttribute(Mage_Catalog_Model_Product::ENTITY, 'rise_course_uuid',
 /* @var $installer Mage_Sales_Model_Resource_Setup */
 $installer = new Mage_Sales_Model_Resource_Setup('core_setup');
 
-$installer->addAttribute('quote_item', 'rise_course_uuid', array(
+$installer->addAttribute('quote_item', 'sarus_course_uuid', array(
     'type' => 'varchar',
     'required' => false,
     'comment' => 'Unique Identifier for Sarus specific courses',
     'grid' => false,
 ));
-$installer->addAttribute('order_item', 'rise_course_uuid', array(
+$installer->addAttribute('order_item', 'sarus_course_uuid', array(
     'type' => 'varchar',
     'required' => false,
     'comment' => 'Unique Identifier for Sarus specific courses',

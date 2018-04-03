@@ -6,7 +6,7 @@ class Swarming_Sarus_Model_Product_Type extends Mage_Catalog_Model_Product_Type_
 
     const ATTRIBUTE_SET_NAME = 'Sarus';
 
-    const ATTRIBUTE_COURSE_UUID = 'rise_course_uuid';
+    const ATTRIBUTE_COURSE_UUID = 'sarus_course_uuid';
 
     /**
      * @param Mage_Catalog_Model_Product $product

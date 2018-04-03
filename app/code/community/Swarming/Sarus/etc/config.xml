@@ -39,14 +39,14 @@
         </resources>
         <fieldsets>
             <sales_convert_quote_item>
-                <rise_course_uuid>
+                <sarus_course_uuid>
                     <to_order_item>*</to_order_item>
-                </rise_course_uuid>
+                </sarus_course_uuid>
             </sales_convert_quote_item>
             <sales_convert_order_item>
-                <rise_course_uuid>
+                <sarus_course_uuid>
                     <to_quote_item>*</to_quote_item>
-                </rise_course_uuid>
+                </sarus_course_uuid>
             </sales_convert_order_item>
         </fieldsets>
         <catalog>
@@ -67,7 +67,7 @@
             <quote>
                 <item>
                     <product_attributes>
-                        <rise_course_uuid/>
+                        <sarus_course_uuid/>
                     </product_attributes>
                 </item>
             </quote>

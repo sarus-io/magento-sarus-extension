@@ -16,11 +16,11 @@ $attributeSet->save();
 $attributeSet->initFromSkeleton($productEntityType->getDefaultAttributeSetId());
 $attributeSet->save();
 
-$riseAttributes = array(
+$sarusAttributes = array(
     Swarming_Sarus_Model_Product_Type::ATTRIBUTE_COURSE_UUID
 );
 
 $setup = new Mage_Eav_Model_Entity_Setup('core_setup');
-foreach ($riseAttributes as $attributeCode) {
+foreach ($sarusAttributes as $attributeCode) {
     $setup->addAttributeToSet(Mage_Catalog_Model_Product::ENTITY, Swarming_Sarus_Model_Product_Type::ATTRIBUTE_SET_NAME, 'General', $attributeCode);
 }

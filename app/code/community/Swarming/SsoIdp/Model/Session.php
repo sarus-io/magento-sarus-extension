@@ -4,7 +4,7 @@ class Swarming_SsoIdp_Model_Session extends Mage_Core_Model_Session_Abstract
 {
     public function __construct()
     {
-        $this->init('rise_sso_idp');
+        $this->init('sarus_sso_idp');
     }
 
 }

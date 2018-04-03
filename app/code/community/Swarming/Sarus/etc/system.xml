@@ -42,7 +42,7 @@
                             <show_in_website>1</show_in_website>
                             <show_in_store>0</show_in_store>
                         </my_courses>
-                        <rise_base_url translate="label comment">
+                        <sarus_base_url translate="label comment">
                             <label>Sarus Base URL</label>
                             <comment>Base URL for Sarus install. i.e. http://mycompany.sarus.io</comment>
                             <frontend_type>text</frontend_type>
@@ -50,7 +50,7 @@
                             <show_in_default>1</show_in_default>
                             <show_in_website>1</show_in_website>
                             <show_in_store>0</show_in_store>
-                        </rise_base_url>
+                        </sarus_base_url>
                     </fields>
                 </general>
                 <api translate="label">

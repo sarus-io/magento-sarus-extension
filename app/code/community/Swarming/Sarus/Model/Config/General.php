@@ -6,7 +6,7 @@ class Swarming_Sarus_Model_Config_General
 
     const XML_PATH_MY_COURSES = 'swarming_sarus/general/my_courses';
 
-    const XML_PATH_BASE_URL = 'swarming_sarus/general/rise_base_url';
+    const XML_PATH_BASE_URL = 'swarming_sarus/general/sarus_base_url';
 
     /**
      * @param int|string|null $storeId
