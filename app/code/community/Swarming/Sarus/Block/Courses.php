@@ -61,13 +61,4 @@ class Swarming_Sarus_Block_Courses extends Mage_Customer_Block_Account_Dashboard
             ? $courseData['image_src']
             : $this->getSkinUrl('/images/catalog/product/placeholder/image.jpg');
     }
-
-    /**
-     * @param array $courseData
-     * @return string
-     */
-    public function getCourseLink($courseData)
-    {
-        return $this->_configGeneral->getSarusBaseUrl() . '/e/' . $courseData['course_uuid'];
-    }
 }

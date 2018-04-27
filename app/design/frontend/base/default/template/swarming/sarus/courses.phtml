@@ -19,7 +19,9 @@ $customerCourses = $this->getCustomerCourses();
                         <div class="item-inner">
                             <h3><?php echo $this->escapeHtml($course['title']) ?></h3>
                             <img class="img-responsive" src="<?php echo $this->getCourseImageUrl($course); ?>" />
-                            <a class="btn" target="_blank" href="<?php echo $this->getCourseLink($course) ?>"><?php echo $this->__('Go to Course!') ?></a>
+                            <?php if (!empty($course['url'])): ?>
+                                <a class="btn" target="_blank" href="<?php echo $course['url'] ?>"><?php echo $this->__('Go to Course!') ?></a>
+                            <?php endif; ?>
                         </div>
                     </li>
                 <?php endforeach; ?>
