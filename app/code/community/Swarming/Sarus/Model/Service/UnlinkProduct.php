@@ -2,7 +2,7 @@
 
 class Swarming_Sarus_Model_Service_UnlinkProduct
 {
-    const ENDPOINT = '/v1/ecommerce/{product}/unlink';
+    const ENDPOINT = '/v1/products/unlink/{product}';
 
     /**
      * @var Swarming_Sarus_Model_Submission_Manager
