@@ -3,7 +3,7 @@
     <tabs>
         <sarus translate="label">
             <label>Sarus</label>
-            <sort_order>99999</sort_order>
+            <sort_order>900</sort_order>
         </sarus>
     </tabs>
     <sections>
