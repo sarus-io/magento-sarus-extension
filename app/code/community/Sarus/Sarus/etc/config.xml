@@ -31,11 +31,11 @@
             </swarming_sarus>
         </helpers>
         <resources>
-            <swarming_sarus_setup>
+            <sarus_setup>
                 <setup>
                     <module>Swarming_Sarus</module>
                 </setup>
-            </swarming_sarus_setup>
+            </sarus_setup>
         </resources>
         <fieldsets>
             <sales_convert_quote_item>
