@@ -1,6 +1,6 @@
 <?php
 
-class Swarming_Sarus_Model_Product_Type extends Mage_Catalog_Model_Product_Type_Abstract
+class Sarus_Sarus_Model_Product_Type extends Mage_Catalog_Model_Product_Type_Abstract
 {
     const TYPE_CODE = 'sarus';
 

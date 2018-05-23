@@ -1,6 +1,6 @@
 <?php
 
-class Swarming_Sarus_Block_Adminhtml_ErrorLog_Grid extends Mage_Adminhtml_Block_Widget_Grid
+class Sarus_Sarus_Block_Adminhtml_ErrorLog_Grid extends Mage_Adminhtml_Block_Widget_Grid
 {
     public function __construct()
     {
@@ -13,11 +13,11 @@ class Swarming_Sarus_Block_Adminhtml_ErrorLog_Grid extends Mage_Adminhtml_Block_
     }
 
     /**
-     * @return Swarming_Sarus_Model_Resource_Submission_Collection
+     * @return Sarus_Sarus_Model_Resource_Submission_Collection
      */
     protected function _createSubmissionCollection()
     {
-        return Mage::getResourceModel('swarming_sarus/submission_collection');
+        return Mage::getResourceModel('sarus_sarus/submission_collection');
     }
 
     /**
@@ -25,7 +25,7 @@ class Swarming_Sarus_Block_Adminhtml_ErrorLog_Grid extends Mage_Adminhtml_Block_
      */
     protected function _getActions()
     {
-        return Mage::getModel('swarming_sarus/config_source_apiAction')->toOptionHash();
+        return Mage::getModel('sarus_sarus/config_source_apiAction')->toOptionHash();
     }
 
     /**
@@ -140,7 +140,7 @@ class Swarming_Sarus_Block_Adminhtml_ErrorLog_Grid extends Mage_Adminhtml_Block_
     }
 
     /**
-     * @param Swarming_Sarus_Model_Submission $row
+     * @param Sarus_Sarus_Model_Submission $row
      * @return string
      */
     public function getRowUrl($row)

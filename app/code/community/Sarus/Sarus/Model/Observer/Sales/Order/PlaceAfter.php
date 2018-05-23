@@ -1,35 +1,35 @@
 <?php
 
-class Swarming_Sarus_Model_Observer_Sales_Order_PlaceAfter
+class Sarus_Sarus_Model_Observer_Sales_Order_PlaceAfter
 {
     /**
-     * @var Swarming_Sarus_Model_Config_General
+     * @var Sarus_Sarus_Model_Config_General
      */
     protected $_configGeneral;
 
     /**
-     * @var Swarming_Sarus_Helper_Order
+     * @var Sarus_Sarus_Helper_Order
      */
     protected $_orderHelper;
 
     /**
-     * @var Swarming_Sarus_Model_Service_OrderComplete
+     * @var Sarus_Sarus_Model_Service_OrderComplete
      */
     protected $_orderCompleteService;
 
     public function __construct()
     {
-        $this->_configGeneral = Mage::getModel('swarming_sarus/config_general');
-        $this->_orderHelper = Mage::helper('swarming_sarus/order');
-        $this->_orderCompleteService = Mage::getModel('swarming_sarus/service_orderComplete');
+        $this->_configGeneral = Mage::getModel('sarus_sarus/config_general');
+        $this->_orderHelper = Mage::helper('sarus_sarus/order');
+        $this->_orderCompleteService = Mage::getModel('sarus_sarus/service_orderComplete');
     }
 
     /**
-     * @return Swarming_Sarus_Model_Submission
+     * @return Sarus_Sarus_Model_Submission
      */
     public function _createSubmission()
     {
-        return Mage::getModel('swarming_sarus/submission');
+        return Mage::getModel('sarus_sarus/submission');
     }
 
     /**

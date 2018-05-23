@@ -1,25 +1,25 @@
 <?php
 
-class Swarming_Sarus_Model_Service_UnlinkProduct
+class Sarus_Sarus_Model_Service_UnlinkProduct
 {
     const ENDPOINT = '/v1/products/unlink/{product}';
 
     /**
-     * @var Swarming_Sarus_Model_Submission_Manager
+     * @var Sarus_Sarus_Model_Submission_Manager
      */
     protected $_submissionManager;
 
     public function __construct()
     {
-        $this->_submissionManager = Mage::getModel('swarming_sarus/submission_manager');
+        $this->_submissionManager = Mage::getModel('sarus_sarus/submission_manager');
     }
 
     /**
-     * @return Swarming_Sarus_Model_Submission
+     * @return Sarus_Sarus_Model_Submission
      */
     public function _createSubmission()
     {
-        return Mage::getModel('swarming_sarus/submission');
+        return Mage::getModel('sarus_sarus/submission');
     }
 
     /**
@@ -32,7 +32,7 @@ class Swarming_Sarus_Model_Service_UnlinkProduct
         $submission = $this->_createSubmission();
         $submission->setStoreId($storeId);
         $submission->setApiEndpoint(str_replace('{product}', $productId, self::ENDPOINT));
-        $submission->setApiMethod(Swarming_Sarus_Model_Http::METHOD_POST);
+        $submission->setApiMethod(Sarus_Sarus_Model_Http::METHOD_POST);
 
         try {
             $this->_submissionManager->sendSubmission($submission);

@@ -3,11 +3,11 @@
     <menu>
         <report>
             <children>
-                <swarming_sarus translate="title">
+                <sarus_sarus translate="title">
                     <title>Sarus Submissions</title>
                     <action>adminhtml/sarus_submission/index</action>
                     <sort_order>999</sort_order>
-                </swarming_sarus>
+                </sarus_sarus>
             </children>
         </report>
     </menu>
@@ -17,18 +17,18 @@
                 <children>
                     <report>
                         <children>
-                            <swarming_sarus translate="title">
+                            <sarus_sarus translate="title">
                                 <title>Sarus Submission</title>
-                            </swarming_sarus>
+                            </sarus_sarus>
                         </children>
                     </report>
                     <system>
                         <children>
                             <config>
                                 <children>
-                                    <swarming_sarus translate="title">
+                                    <sarus_sarus translate="title">
                                         <title>Sarus General</title>
-                                    </swarming_sarus>
+                                    </sarus_sarus>
                                     <!--<sarus_singlesignon translate="title">-->
                                         <!--<title>Sarus Single Sign On</title>-->
                                     <!--</sarus_singlesignon>-->

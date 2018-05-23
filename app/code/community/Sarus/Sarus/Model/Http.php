@@ -1,13 +1,13 @@
 <?php
 
-class Swarming_Sarus_Model_Http
+class Sarus_Sarus_Model_Http
 {
     const METHOD_GET = 'get';
     const METHOD_POST = 'post';
     const METHOD_PUT = 'put';
 
     /**
-     * @var Swarming_Sarus_Model_Config_Api
+     * @var Sarus_Sarus_Model_Config_Api
      */
     protected $_configApi;
 
@@ -17,12 +17,12 @@ class Swarming_Sarus_Model_Http
     protected $_client;
 
     /**
-     * @var Swarming_Sarus_Model_Http_Logger
+     * @var Sarus_Sarus_Model_Http_Logger
      */
     protected $_httpLogger;
 
     /**
-     * @var Swarming_Sarus_Model_Http_FailNotification
+     * @var Sarus_Sarus_Model_Http_FailNotification
      */
     protected $_failNotification;
 
@@ -37,9 +37,9 @@ class Swarming_Sarus_Model_Http
 
     public function __construct()
     {
-        $this->_configApi = Mage::getModel('swarming_sarus/config_api');
-        $this->_httpLogger = Mage::getModel('swarming_sarus/http_logger');
-        $this->_failNotification = Mage::getModel('swarming_sarus/http_failNotification');
+        $this->_configApi = Mage::getModel('sarus_sarus/config_api');
+        $this->_httpLogger = Mage::getModel('sarus_sarus/http_logger');
+        $this->_failNotification = Mage::getModel('sarus_sarus/http_failNotification');
     }
 
     /**

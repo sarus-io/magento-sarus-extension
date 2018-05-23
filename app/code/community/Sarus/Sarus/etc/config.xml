@@ -1,39 +1,39 @@
 <?xml version="1.0"?>
 <config>
     <modules>
-        <Swarming_Sarus>
+        <Sarus_Sarus>
             <version>0.1.0</version>
-        </Swarming_Sarus>
+        </Sarus_Sarus>
     </modules>
     <global>
         <models>
-            <swarming_sarus>
-                <class>Swarming_Sarus_Model</class>
-                <resourceModel>swarming_sarus_resource</resourceModel>
-            </swarming_sarus>
-            <swarming_sarus_resource>
-                <class>Swarming_Sarus_Model_Resource</class>
+            <sarus_sarus>
+                <class>Sarus_Sarus_Model</class>
+                <resourceModel>sarus_sarus_resource</resourceModel>
+            </sarus_sarus>
+            <sarus_sarus_resource>
+                <class>Sarus_Sarus_Model_Resource</class>
                 <entities>
                     <sarus_submission>
                         <table>sarus_submission</table>
                     </sarus_submission>
                 </entities>
-            </swarming_sarus_resource>
+            </sarus_sarus_resource>
         </models>
         <blocks>
-            <swarming_sarus>
-                <class>Swarming_Sarus_Block</class>
-            </swarming_sarus>
+            <sarus_sarus>
+                <class>Sarus_Sarus_Block</class>
+            </sarus_sarus>
         </blocks>
         <helpers>
-            <swarming_sarus>
-                <class>Swarming_Sarus_Helper</class>
-            </swarming_sarus>
+            <sarus_sarus>
+                <class>Sarus_Sarus_Helper</class>
+            </sarus_sarus>
         </helpers>
         <resources>
             <sarus_setup>
                 <setup>
-                    <module>Swarming_Sarus</module>
+                    <module>Sarus_Sarus</module>
                 </setup>
             </sarus_setup>
         </resources>
@@ -54,7 +54,7 @@
                 <type>
                     <sarus translate="label">
                         <label>Sarus Product</label>
-                        <model>swarming_sarus/product_type</model>
+                        <model>sarus_sarus/product_type</model>
                         <composite>0</composite>
                         <index_priority>25</index_priority>
                         <can_use_qty_decimals>0</can_use_qty_decimals>
@@ -75,54 +75,54 @@
         <events>
             <checkout_allow_guest>
                 <observers>
-                    <swarming_sarus>
+                    <sarus_sarus>
                         <type>singleton</type>
-                        <class>swarming_sarus/observer_checkout_allowGuest</class>
+                        <class>sarus_sarus/observer_checkout_allowGuest</class>
                         <method>execute</method>
-                    </swarming_sarus>
+                    </sarus_sarus>
                 </observers>
             </checkout_allow_guest>
             <sales_quote_item_set_product>
                 <observers>
-                    <swarming_sarus>
+                    <sarus_sarus>
                         <type>model</type>
-                        <class>swarming_sarus/observer_sales_quoteItem_setProduct</class>
+                        <class>sarus_sarus/observer_sales_quoteItem_setProduct</class>
                         <method>execute</method>
-                    </swarming_sarus>
+                    </sarus_sarus>
                 </observers>
             </sales_quote_item_set_product>
             <sales_quote_item_qty_set_after>
                 <observers>
                     <sarus_product>
-                        <class>swarming_sarus/observer_sales_quoteItem_setQtyAfter</class>
+                        <class>sarus_sarus/observer_sales_quoteItem_setQtyAfter</class>
                         <method>execute</method>
                     </sarus_product>
                 </observers>
             </sales_quote_item_qty_set_after>
             <sales_order_place_after>
                 <observers>
-                    <swarming_sarus>
+                    <sarus_sarus>
                         <type>singleton</type>
-                        <class>swarming_sarus/observer_sales_order_placeAfter</class>
+                        <class>sarus_sarus/observer_sales_order_placeAfter</class>
                         <method>execute</method>
-                    </swarming_sarus>
+                    </sarus_sarus>
                 </observers>
             </sales_order_place_after>
             <sales_order_creditmemo_refund>
                 <observers>
-                    <swarming_sarus>
+                    <sarus_sarus>
                         <type>singleton</type>
-                        <class>swarming_sarus/observer_Sales_Creditmemo_Refund</class>
+                        <class>sarus_sarus/observer_Sales_Creditmemo_Refund</class>
                         <method>execute</method>
-                    </swarming_sarus>
+                    </sarus_sarus>
                 </observers>
             </sales_order_creditmemo_refund>
             <catalog_product_delete_before>
                 <observers>
-                    <swarming_sarus>
-                        <class>swarming_sarus/observer_Catalog_ProductDeleteBefore</class>
+                    <sarus_sarus>
+                        <class>sarus_sarus/observer_Catalog_ProductDeleteBefore</class>
                         <method>execute</method>
-                    </swarming_sarus>
+                    </sarus_sarus>
                 </observers>
             </catalog_product_delete_before>
         </events>
@@ -130,19 +130,19 @@
     <frontend>
         <layout>
             <updates>
-                <swarming_sarus>
-                    <file>swarming/sarus.xml</file>
-                </swarming_sarus>
+                <sarus_sarus>
+                    <file>sarus/sarus.xml</file>
+                </sarus_sarus>
             </updates>
         </layout>
         <routers>
-            <swarming_sarus>
+            <sarus_sarus>
                 <use>standard</use>
                 <args>
-                    <module>Swarming_Sarus</module>
+                    <module>Sarus_Sarus</module>
                     <frontName>sarus</frontName>
                 </args>
-            </swarming_sarus>
+            </sarus_sarus>
         </routers>
     </frontend>
     <crontab>
@@ -150,7 +150,7 @@
             <sarus_unsynced_products_catalog>
                 <schedule><cron_expr>*/10 * * * *</cron_expr></schedule>
                 <run>
-                    <model>swarming_sarus/cron_submissionQueue::execute</model>
+                    <model>sarus_sarus/cron_submissionQueue::execute</model>
                 </run>
             </sarus_unsynced_products_catalog>
         </jobs>
@@ -158,9 +158,9 @@
     <adminhtml>
         <layout>
             <updates>
-                <swarming_buzzi>
-                    <file>swarming/sarus.xml</file>
-                </swarming_buzzi>
+                <sarus_buzzi>
+                    <file>sarus/sarus.xml</file>
+                </sarus_buzzi>
             </updates>
         </layout>
     </adminhtml>
@@ -169,14 +169,14 @@
             <adminhtml>
                 <args>
                     <modules>
-                        <Swarming_Sarus before="-">Swarming_Sarus_Adminhtml</Swarming_Sarus>
+                        <Sarus_Sarus before="-">Sarus_Sarus_Adminhtml</Sarus_Sarus>
                     </modules>
                 </args>
             </adminhtml>
         </routers>
     </admin>
     <default>
-        <swarming_sarus>
+        <sarus_sarus>
             <general>
                 <enabled>1</enabled>
                 <my_courses>1</my_courses>
@@ -186,6 +186,6 @@
                 <max_time_resend>5</max_time_resend>
                 <base_url>https://api.sarus.io</base_url>
             </api>
-        </swarming_sarus>
+        </sarus_sarus>
     </default>
 </config>

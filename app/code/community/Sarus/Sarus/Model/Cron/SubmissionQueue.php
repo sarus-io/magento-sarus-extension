@@ -1,6 +1,6 @@
 <?php
 
-class Swarming_Sarus_Model_Cron_SubmissionQueue
+class Sarus_Sarus_Model_Cron_SubmissionQueue
 {
     /**
      * @var Mage_Core_Model_App
@@ -8,28 +8,28 @@ class Swarming_Sarus_Model_Cron_SubmissionQueue
     protected $_app;
 
     /**
-     * @var Swarming_Sarus_Model_Config_General
+     * @var Sarus_Sarus_Model_Config_General
      */
     protected $_configGeneral;
 
     /**
-     * @var Swarming_Sarus_Model_Submission_Manager
+     * @var Sarus_Sarus_Model_Submission_Manager
      */
     protected $_submissionManager;
 
     public function __construct()
     {
         $this->_app = Mage::app();
-        $this->_configGeneral = Mage::getModel('swarming_sarus/config_general');
-        $this->_submissionManager = Mage::getModel('swarming_sarus/submission_manager');
+        $this->_configGeneral = Mage::getModel('sarus_sarus/config_general');
+        $this->_submissionManager = Mage::getModel('sarus_sarus/submission_manager');
     }
 
     /**
-     * @return Swarming_Sarus_Model_Resource_Submissionqueue_Collection
+     * @return Sarus_Sarus_Model_Resource_Submissionqueue_Collection
      */
     public function _createSubmissionQueueCallection()
     {
-        return Mage::getResourceModel('swarming_sarus/submissionqueue_collection');
+        return Mage::getResourceModel('sarus_sarus/submissionqueue_collection');
     }
 
     /**

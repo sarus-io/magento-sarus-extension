@@ -10,17 +10,17 @@ $productEntityType = $productResource->getEntityType();
 /** @var Mage_Eav_Model_Entity_Attribute_Set $attributeSet */
 $attributeSet = Mage::getModel('eav/entity_attribute_set');
 $attributeSet->setEntityTypeId($productEntityType->getId());
-$attributeSet->setAttributeSetName(Swarming_Sarus_Model_Product_Type::ATTRIBUTE_SET_NAME);
+$attributeSet->setAttributeSetName(Sarus_Sarus_Model_Product_Type::ATTRIBUTE_SET_NAME);
 $attributeSet->validate();
 $attributeSet->save();
 $attributeSet->initFromSkeleton($productEntityType->getDefaultAttributeSetId());
 $attributeSet->save();
 
 $sarusAttributes = array(
-    Swarming_Sarus_Model_Product_Type::ATTRIBUTE_COURSE_UUID
+    Sarus_Sarus_Model_Product_Type::ATTRIBUTE_COURSE_UUID
 );
 
 $setup = new Mage_Eav_Model_Entity_Setup('core_setup');
 foreach ($sarusAttributes as $attributeCode) {
-    $setup->addAttributeToSet(Mage_Catalog_Model_Product::ENTITY, Swarming_Sarus_Model_Product_Type::ATTRIBUTE_SET_NAME, 'General', $attributeCode);
+    $setup->addAttributeToSet(Mage_Catalog_Model_Product::ENTITY, Sarus_Sarus_Model_Product_Type::ATTRIBUTE_SET_NAME, 'General', $attributeCode);
 }

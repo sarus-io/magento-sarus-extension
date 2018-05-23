@@ -1,15 +1,15 @@
 <?php
 
-class Swarming_Sarus_Helper_Quote
+class Sarus_Sarus_Helper_Quote
 {
     /**
-     * @var Swarming_Sarus_Helper_Product
+     * @var Sarus_Sarus_Helper_Product
      */
     protected $_productHelper;
 
     public function __construct()
     {
-        $this->_productHelper = Mage::helper('swarming_sarus/product');
+        $this->_productHelper = Mage::helper('sarus_sarus/product');
     }
 
     /**

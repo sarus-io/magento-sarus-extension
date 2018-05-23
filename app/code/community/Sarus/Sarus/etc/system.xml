@@ -1,15 +1,15 @@
 <?xml version="1.0"?>
 <config>
     <tabs>
-        <swarming translate="label">
-            <label>Swarming</label>
+        <sarus translate="label">
+            <label>Sarus</label>
             <sort_order>99999</sort_order>
-        </swarming>
+        </sarus>
     </tabs>
     <sections>
-        <swarming_sarus translate="label">
+        <sarus_sarus translate="label">
             <label>Sarus</label>
-            <tab>swarming</tab>
+            <tab>sarus</tab>
             <frontend_type>text</frontend_type>
             <sort_order>1000</sort_order>
             <show_in_default>1</show_in_default>
@@ -112,6 +112,6 @@
                     </fields>
                 </api>
             </groups>
-        </swarming_sarus>
+        </sarus_sarus>
     </sections>
 </config>

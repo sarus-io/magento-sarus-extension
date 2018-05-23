@@ -1,21 +1,21 @@
 <?php
 
-class Swarming_Sarus_Model_Observer_Sales_QuoteItem_SetQtyAfter
+class Sarus_Sarus_Model_Observer_Sales_QuoteItem_SetQtyAfter
 {
     /**
-     * @var Swarming_Sarus_Model_Config_General
+     * @var Sarus_Sarus_Model_Config_General
      */
     protected $_configGeneral;
 
     /**
-     * @var Swarming_Sarus_Helper_Quote
+     * @var Sarus_Sarus_Helper_Quote
      */
     protected $_quoteHelper;
 
     public function __construct()
     {
-        $this->_configGeneral = Mage::getModel('swarming_sarus/config_general');
-        $this->_quoteHelper = Mage::helper('swarming_sarus/quote');
+        $this->_configGeneral = Mage::getModel('sarus_sarus/config_general');
+        $this->_quoteHelper = Mage::helper('sarus_sarus/quote');
     }
 
     /**

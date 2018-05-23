@@ -1,15 +1,15 @@
 <?php
 
-class Swarming_Sarus_Model_Config_Source_ApiAction
+class Sarus_Sarus_Model_Config_Source_ApiAction
 {
     /**
-     * @var Swarming_Sarus_Helper_Data
+     * @var Sarus_Sarus_Helper_Data
      */
     protected $_helper;
 
     public function __construct()
     {
-        $this->_helper = Mage::helper('swarming_sarus');
+        $this->_helper = Mage::helper('sarus_sarus');
     }
 
     /**
@@ -18,10 +18,10 @@ class Swarming_Sarus_Model_Config_Source_ApiAction
     public function toOptionHash()
     {
         return array(
-            Swarming_Sarus_Model_Service_Courses::ENDPOINT => $this->_helper->__('Get Courses'),
-            Swarming_Sarus_Model_Service_Creditmemo::ENDPOINT => $this->_helper->__('Deactivate Course'),
-            Swarming_Sarus_Model_Service_OrderComplete::ENDPOINT => $this->_helper->__('Purchase Course'),
-            Swarming_Sarus_Model_Service_UnlinkProduct::ENDPOINT => $this->_helper->__('Unlink Product'),
+            Sarus_Sarus_Model_Service_Courses::ENDPOINT => $this->_helper->__('Get Courses'),
+            Sarus_Sarus_Model_Service_Creditmemo::ENDPOINT => $this->_helper->__('Deactivate Course'),
+            Sarus_Sarus_Model_Service_OrderComplete::ENDPOINT => $this->_helper->__('Purchase Course'),
+            Sarus_Sarus_Model_Service_UnlinkProduct::ENDPOINT => $this->_helper->__('Unlink Product'),
         );
     }
 }

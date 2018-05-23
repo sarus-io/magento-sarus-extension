@@ -1,17 +1,17 @@
 <?php
 
-class Swarming_Sarus_Model_Http_FailNotification
+class Sarus_Sarus_Model_Http_FailNotification
 {
     const LOG_FILE = 'sarus_api_notification.log';
 
     /**
-     * @var Swarming_Sarus_Model_Config_Api
+     * @var Sarus_Sarus_Model_Config_Api
      */
     protected $_configApi;
 
     public function __construct()
     {
-        $this->_configApi = Mage::getModel('swarming_sarus/config_api');
+        $this->_configApi = Mage::getModel('sarus_sarus/config_api');
     }
     /**
      * @param string $path

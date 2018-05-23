@@ -1,6 +1,6 @@
 <?php
 
-class Swarming_Sarus_Model_Http_Logger
+class Sarus_Sarus_Model_Http_Logger
 {
     /**
      * @var string

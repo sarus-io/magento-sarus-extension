@@ -1,25 +1,25 @@
 <?php
 
-class Swarming_Sarus_Model_Service_Courses
+class Sarus_Sarus_Model_Service_Courses
 {
     const ENDPOINT = '/v1/participations';
 
     /**
-     * @var Swarming_Sarus_Model_Submission_Manager
+     * @var Sarus_Sarus_Model_Submission_Manager
      */
     protected $_submissionManager;
 
     public function __construct()
     {
-        $this->_submissionManager = Mage::getModel('swarming_sarus/submission_manager');
+        $this->_submissionManager = Mage::getModel('sarus_sarus/submission_manager');
     }
 
     /**
-     * @return Swarming_Sarus_Model_Submission
+     * @return Sarus_Sarus_Model_Submission
      */
     public function _createSubmission()
     {
-        return Mage::getModel('swarming_sarus/submission');
+        return Mage::getModel('sarus_sarus/submission');
     }
 
     /**
@@ -32,7 +32,7 @@ class Swarming_Sarus_Model_Service_Courses
         $submission = $this->_createSubmission();
         $submission->setStoreId($storeId);
         $submission->setApiEndpoint(self::ENDPOINT);
-        $submission->setApiMethod(Swarming_Sarus_Model_Http::METHOD_GET);
+        $submission->setApiMethod(Sarus_Sarus_Model_Http::METHOD_GET);
         $submission->importData(array('email' => $email));
 
         try {

@@ -1,35 +1,35 @@
 <?php
 
-class Swarming_Sarus_Model_Observer_Sales_Creditmemo_Refund
+class Sarus_Sarus_Model_Observer_Sales_Creditmemo_Refund
 {
     /**
-     * @var Swarming_Sarus_Model_Config_General
+     * @var Sarus_Sarus_Model_Config_General
      */
     protected $_configGeneral;
 
     /**
-     * @var Swarming_Sarus_Helper_Creditmemo
+     * @var Sarus_Sarus_Helper_Creditmemo
      */
     protected $_creditmemoHelper;
 
     /**
-     * @var Swarming_Sarus_Model_Service_Creditmemo
+     * @var Sarus_Sarus_Model_Service_Creditmemo
      */
     protected $_creditmemoService;
 
     public function __construct()
     {
-        $this->_configGeneral = Mage::getModel('swarming_sarus/config_general');
-        $this->_creditmemoHelper = Mage::helper('swarming_sarus/creditmemo');
-        $this->_creditmemoService = Mage::getModel('swarming_sarus/service_creditmemo');
+        $this->_configGeneral = Mage::getModel('sarus_sarus/config_general');
+        $this->_creditmemoHelper = Mage::helper('sarus_sarus/creditmemo');
+        $this->_creditmemoService = Mage::getModel('sarus_sarus/service_creditmemo');
     }
 
     /**
-     * @return Swarming_Sarus_Model_Submission
+     * @return Sarus_Sarus_Model_Submission
      */
     public function _createSubmission()
     {
-        return Mage::getModel('swarming_sarus/submission');
+        return Mage::getModel('sarus_sarus/submission');
     }
 
     /**

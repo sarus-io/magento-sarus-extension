@@ -2,15 +2,15 @@
 <layout version="0.1.0">
     <customer_account>
         <reference name="customer_account_navigation">
-            <action method="addLink" ifconfig="swarming_sarus/general/my_courses">
-                <name>swarming_sarus_list_index</name>
-                <path>swarming_sarus/list/index</path>
+            <action method="addLink" ifconfig="sarus_sarus/general/my_courses">
+                <name>sarus_sarus_list_index</name>
+                <path>sarus_sarus/list/index</path>
                 <label>My Courses</label>
             </action>
         </reference>
     </customer_account>
 
-    <swarming_sarus_list_index>
+    <sarus_sarus_list_index>
     	<update handle="customer_account" />
     	<reference name="root">
             <action method="setTemplate">
@@ -18,9 +18,9 @@
             </action>
         </reference>
         <reference name="content">
-            <block type="swarming_sarus/courses" name="sarus.courselist" template="swarming/sarus/courses.phtml"/>
+            <block type="sarus_sarus/courses" name="sarus.courselist" template="sarus/sarus/courses.phtml"/>
         </reference>
-    </swarming_sarus_list_index>
+    </sarus_sarus_list_index>
 
     <PRODUCT_TYPE_sarus translate="label" module="sarus_product">
         <label>Catalog Product View (Sarus)</label>
@@ -30,7 +30,7 @@
         </reference>
 
         <reference name="product.info">
-            <block type="swarming_sarus/product_view_type" name="product.info.sarus" as="product_type_data" template="swarming/sarus/catalog/product/view/type/default.phtml">
+            <block type="sarus_sarus/product_view_type" name="product.info.sarus" as="product_type_data" template="sarus/sarus/catalog/product/view/type/default.phtml">
                 <block type="core/text_list" name="product.info.sarus.extra" as="product_type_data_extra" translate="label">
                     <label>Product Extra Info</label>
                 </block>
@@ -38,7 +38,7 @@
         </reference>
 
         <reference name="product.info.addtocart">
-            <action method="setTemplate"><template>swarming/sarus/catalog/product/view/addtocart.phtml</template></action>
+            <action method="setTemplate"><template>sarus/sarus/catalog/product/view/addtocart.phtml</template></action>
         </reference>
     </PRODUCT_TYPE_sarus>
 </layout>

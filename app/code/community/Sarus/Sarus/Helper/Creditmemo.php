@@ -1,15 +1,15 @@
 <?php
 
-class Swarming_Sarus_Helper_Creditmemo
+class Sarus_Sarus_Helper_Creditmemo
 {
     /**
-     * @var Swarming_Sarus_Helper_Product
+     * @var Sarus_Sarus_Helper_Product
      */
     protected $_productHelper;
 
     public function __construct()
     {
-        $this->_productHelper = Mage::helper('swarming_sarus/product');
+        $this->_productHelper = Mage::helper('sarus_sarus/product');
     }
 
     /**
@@ -49,7 +49,7 @@ class Swarming_Sarus_Helper_Creditmemo
                 continue;
             }
             if ($this->_productHelper->isSarus($product)) {
-                $uuids[] = $product->getData(Swarming_Sarus_Model_Product_Type::ATTRIBUTE_COURSE_UUID);
+                $uuids[] = $product->getData(Sarus_Sarus_Model_Product_Type::ATTRIBUTE_COURSE_UUID);
             }
         }
 
