@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<layout version="0.1.0">
+    <sarus_ssoidp_idp_login>
+        <reference name="root">
+            <action method="setTemplate">
+                <template>page/empty.phtml</template>
+            </action>
+        </reference>
+        <reference name="content">
+            <block type="sarus_ssoidp/login" name="sso.idp.login" template="sarus/ssoidp/login.phtml"/>
+        </reference>
+    </sarus_ssoidp_idp_login>
+</layout>
