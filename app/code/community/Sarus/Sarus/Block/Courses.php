@@ -26,7 +26,11 @@ class Sarus_Sarus_Block_Courses extends Mage_Customer_Block_Account_Dashboard
      */
     public function getCustomerCourses()
     {
-        $sarusResponse = $this->_platform->getSdk()->listEnrollments($this->_getCustomerEmail());
+        try {
+            $sarusResponse = $this->_platform->getSdk()->listEnrollments($this->_getCustomerEmail());
+        } catch (Exception $e) {
+            return [];
+        }
         return (array)$sarusResponse->get('data') ?: [];
     }
 
