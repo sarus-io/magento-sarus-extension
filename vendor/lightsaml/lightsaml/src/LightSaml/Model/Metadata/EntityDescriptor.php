@@ -199,7 +199,7 @@ class EntityDescriptor extends Metadata
      */
     public function setID($id)
     {
-        $this->id = $id !== null ? (string) $id : null;
+        $this->id = null !== $id ? (string) $id : null;
 
         return $this;
     }
@@ -430,7 +430,7 @@ class EntityDescriptor extends Metadata
      */
     public function serialize(\DOMNode $parent, SerializationContext $context)
     {
-        $result = $this->createElement('md:EntityDescriptor', SamlConstants::NS_METADATA, $parent, $context);
+        $result = $this->createElement('EntityDescriptor', SamlConstants::NS_METADATA, $parent, $context);
 
         $this->attributesToXml(array('entityID', 'validUntil', 'cacheDuration', 'ID'), $result);
 

@@ -414,7 +414,7 @@ class Assertion extends AbstractSamlModel
     {
         $this->prepareForXml();
 
-        $result = $this->createElement('saml:Assertion', SamlConstants::NS_ASSERTION, $parent, $context);
+        $result = $this->createElement('Assertion', SamlConstants::NS_ASSERTION, $parent, $context);
 
         $this->attributesToXml(array('ID', 'Version', 'IssueInstant'), $result);
 

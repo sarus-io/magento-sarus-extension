@@ -31,7 +31,7 @@ class Status extends AbstractSamlModel
     public function __construct(StatusCode $statusCode = null, $message = null)
     {
         $this->statusCode = $statusCode;
-        $this->message = $message;
+        $this->statusMessage = $message;
     }
 
     /**
@@ -75,7 +75,7 @@ class Status extends AbstractSamlModel
      */
     public function isSuccess()
     {
-        $result = $this->getStatusCode() && $this->getStatusCode()->getValue() == SamlConstants::STATUS_SUCCESS;
+        $result = $this->getStatusCode() && SamlConstants::STATUS_SUCCESS == $this->getStatusCode()->getValue();
 
         return $result;
     }

@@ -1,0 +1,16 @@
+{
+  "name": "sarus/magento-sarus",
+  "description": "Magento 1 extensions",
+  "license": "proprietary",
+  "authors": [
+    {
+      "name": "Sarus Team",
+      "homepage": "https://sarus.io"
+    }
+  ],
+  "require": {
+    "sarus/sarus-sdk-php": "^1.2",
+    "lightsaml/lightsaml": "^1.4",
+    "monolog/monolog": "^1.0"
+  }
+}

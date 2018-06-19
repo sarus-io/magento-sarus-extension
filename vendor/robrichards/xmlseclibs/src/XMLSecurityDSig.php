@@ -10,7 +10,7 @@ use Exception;
 /**
  * xmlseclibs.php
  *
- * Copyright (c) 2007-2016, Robert Richards <rrichards@cdatazone.org>.
+ * Copyright (c) 2007-2017, Robert Richards <rrichards@cdatazone.org>.
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -43,7 +43,7 @@ use Exception;
  * POSSIBILITY OF SUCH DAMAGE.
  *
  * @author    Robert Richards <rrichards@cdatazone.org>
- * @copyright 2007-2016 Robert Richards <rrichards@cdatazone.org>
+ * @copyright 2007-2017 Robert Richards <rrichards@cdatazone.org>
  * @license   http://www.opensource.org/licenses/bsd-license.php  BSD License
  */
 
@@ -774,6 +774,17 @@ class XMLSecurityDSig
     }
 
     /**
+     * Returns:
+     *  Bool when verifying HMAC_SHA1;
+     *  Int otherwise, with following meanings:
+     *    1 on succesful signature verification,
+     *    0 when signature verification failed,
+     *   -1 if an error occurred during processing.
+     *
+     * NOTE: be very careful when checking the int return value, because in
+     * PHP, -1 will be cast to True when in boolean context. Always check the
+     * return value in a strictly typed way, e.g. "$obj->verify(...) === 1".
+     *
      * @param XMLSecurityKey $objKey
      * @return bool|int
      * @throws Exception

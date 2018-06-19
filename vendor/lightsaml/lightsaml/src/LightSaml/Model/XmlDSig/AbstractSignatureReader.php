@@ -61,8 +61,8 @@ abstract class AbstractSignatureReader extends Signature
             try {
                 $result = $this->validate($credential->getPublicKey());
 
-                if ($result === false) {
-                    return;
+                if (false === $result) {
+                    return null;
                 }
 
                 return $credential;
@@ -91,6 +91,16 @@ abstract class AbstractSignatureReader extends Signature
     protected function castKeyIfNecessary(XMLSecurityKey $key)
     {
         $algorithm = $this->getAlgorithm();
+
+        if (!in_array($algorithm, [
+            XMLSecurityKey::RSA_SHA1,
+            XMLSecurityKey::RSA_SHA256,
+            XMLSecurityKey::RSA_SHA384,
+            XMLSecurityKey::RSA_SHA512,
+        ])) {
+            throw new LightSamlSecurityException(sprintf('Unsupported signing algorithm: "%s"', $algorithm));
+        }
+
         if ($algorithm != $key->type) {
             $key = KeyHelper::castKey($key, $algorithm);
         }

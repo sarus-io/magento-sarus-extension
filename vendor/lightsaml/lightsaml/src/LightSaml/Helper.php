@@ -68,26 +68,16 @@ final class Helper
      */
     public static function parseSAMLTime($time)
     {
-        $matches = array();
-        if (preg_match(
-            '/^(\\d\\d\\d\\d)-(\\d\\d)-(\\d\\d)T(\\d\\d):(\\d\\d):(\\d\\d)(?:\\.\\d+)?Z$/D',
-            $time,
-            $matches
-        ) == 0) {
+        $matches = [];
+        if (0 == preg_match(
+                '/^(\\d\\d\\d\\d)-(\\d\\d)-(\\d\\d)T(\\d\\d):(\\d\\d):(\\d\\d)(?:\\.\\d+)?(Z|[+-]\\d\\d:\\d\\d)$/D',
+                $time,
+                $matches
+            )) {
             throw new \InvalidArgumentException('Invalid SAML2 timestamp: '.$time);
         }
 
-        $year = intval($matches[1]);
-        $month = intval($matches[2]);
-        $day = intval($matches[3]);
-        $hour = intval($matches[4]);
-        $minute = intval($matches[5]);
-        $second = intval($matches[6]);
-
-        // Use gmmktime because the timestamp will always be given in UTC.
-        $ts = gmmktime($hour, $minute, $second, $month, $day, $year);
-
-        return $ts;
+        return strtotime($time);
     }
 
     /**
@@ -169,7 +159,7 @@ final class Helper
      */
     public static function validateOptionalString($value)
     {
-        return $value === null || self::validateRequiredString($value);
+        return null === $value || self::validateRequiredString($value);
     }
 
     /**
@@ -180,7 +170,7 @@ final class Helper
     public static function validateWellFormedUriString($value)
     {
         $value = trim($value);
-        if ($value == '' || strlen($value) > 65520) {
+        if ('' == $value || strlen($value) > 65520) {
             return false;
         }
 
@@ -209,7 +199,7 @@ final class Helper
      */
     public static function validateNotBefore($notBefore, $now, $allowedSecondsSkew)
     {
-        return $notBefore == null || (($notBefore - $allowedSecondsSkew) < $now);
+        return null == $notBefore || (($notBefore - $allowedSecondsSkew) < $now);
     }
 
     /**
@@ -221,6 +211,6 @@ final class Helper
      */
     public static function validateNotOnOrAfter($notOnOrAfter, $now, $allowedSecondsSkew)
     {
-        return $notOnOrAfter == null || ($now < ($notOnOrAfter + $allowedSecondsSkew));
+        return null == $notOnOrAfter || ($now < ($notOnOrAfter + $allowedSecondsSkew));
     }
 }
