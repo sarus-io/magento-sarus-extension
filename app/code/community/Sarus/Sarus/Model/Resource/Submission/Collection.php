@@ -13,7 +13,7 @@ class Sarus_Sarus_Model_Resource_Submission_Collection extends Mage_Core_Model_R
      */
     public function filterIds($submissionIds)
     {
-        $this->addFilter('entity_id', array('in' => $submissionIds), 'public');
+        $this->addFilter('entity_id', ['in' => $submissionIds], 'public');
         return $this;
     }
 
@@ -28,15 +28,22 @@ class Sarus_Sarus_Model_Resource_Submission_Collection extends Mage_Core_Model_R
     }
 
     /**
-     * @param int $maxTimes
+     * @param string $status
      * @return $this
      */
-    public function filterFailed($maxTimes = 0)
+    public function filterStatus($status)
     {
-        $this->addFilter('success', false);
-        if ($maxTimes > 0) {
-            $this->addFilter('counter', array('lteq' => $maxTimes), 'public');
-        }
+        $this->addFieldToFilter('status', ['eq' => $status]);
+        return $this;
+    }
+
+    /**
+     * @param int $threshold
+     * @return $this
+     */
+    public function filterCounter($threshold)
+    {
+        $this->addFieldToFilter('counter', ['lt' => $threshold]);
         return $this;
     }
 }

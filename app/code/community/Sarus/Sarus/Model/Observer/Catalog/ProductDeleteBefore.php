@@ -1,24 +1,26 @@
 <?php
 
+use Sarus\Request\Product\Unlink as SarusUnlink;
+
 class Sarus_Sarus_Model_Observer_Catalog_ProductDeleteBefore
 {
     /**
-     * @var Sarus_Sarus_Model_Config_General
+     * @var \Sarus_Sarus_Model_Config_General
      */
     protected $_configGeneral;
 
     /**
-     * @var Sarus_Sarus_Helper_Product
+     * @var \Sarus_Sarus_Helper_Product
      */
     protected $_productHelper;
 
     /**
-     * @var Sarus_Sarus_Model_Service_UnlinkProduct
+     * @var \Sarus_Sarus_Model_Platform
      */
-    protected $_unlinkProductService;
+    protected $_platform;
 
     /**
-     * @var Mage_Core_Model_App
+     * @var \Mage_Core_Model_App
      */
     protected $_app;
 
@@ -26,12 +28,12 @@ class Sarus_Sarus_Model_Observer_Catalog_ProductDeleteBefore
     {
         $this->_configGeneral = Mage::getModel('sarus_sarus/config_general');
         $this->_productHelper = Mage::helper('sarus_sarus/product');
-        $this->_unlinkProductService = Mage::getModel('sarus_sarus/service_unlinkProduct');
+        $this->_platform = Mage::getModel('sarus_sarus/platform');
         $this->_app = Mage::app();
     }
 
     /**
-     * @return Mage_Core_Model_Session
+     * @return \Mage_Core_Model_Session
      */
     protected function _getSession()
     {
@@ -39,12 +41,12 @@ class Sarus_Sarus_Model_Observer_Catalog_ProductDeleteBefore
     }
 
     /**
-     * @param Varien_Event_Observer $observer
+     * @param \Varien_Event_Observer $observer
      * @return void
      */
     public function execute(Varien_Event_Observer $observer)
     {
-        /** @var Mage_Catalog_Model_Product $product */
+        /** @var \Mage_Catalog_Model_Product $product */
         $product = $observer->getData('product');
 
         if (!$this->_productHelper->isSarus($product)) {
@@ -52,30 +54,38 @@ class Sarus_Sarus_Model_Observer_Catalog_ProductDeleteBefore
         }
 
         foreach ($product->getWebsiteIds() as $websiteId) {
-            $storeId = $this->_app->getWebsite($websiteId)->getDefaultStore()->getId();
+            $website = $this->_app->getWebsite($websiteId);
+            if ($website->getCode() === 'admin') {
+                continue;
+            }
+
+            $storeId = $website->getDefaultStore()->getStoreId();
             if (!$this->_configGeneral->isEnabled($storeId)) {
                 continue;
             }
 
-            $this->_unlinkProduct($product, $storeId);
+            if ($this->unlinkProduct($product, $storeId)) {
+                $this->_getSession()->addSuccess('Product has been successfully unlinked from Sarus.');
+                break;
+            }
         }
     }
 
     /**
-     * @param Mage_Catalog_Model_Product $product
+     * @param \Mage_Catalog_Model_Product $product
      * @param int $storeId
-     * @return void
+     * @return bool
      */
-    protected function _unlinkProduct($product, $storeId)
+    protected function unlinkProduct($product, $storeId)
     {
-        $result = $this->_unlinkProductService->unlinkProduct($product->getId(), $storeId); // TODO Remove after BrainMD migration
-        if ($result) {
-            $this->_getSession()->addSuccess('Product has been successfully unlinked from Sarus.');
+        $sarusRequest = new SarusUnlink($product->getData(Sarus_Sarus_Model_Product_Type::ATTRIBUTE_COURSE_UUID));
+        try {
+            $this->_platform->sendRequest($sarusRequest, $storeId);
+            $result = true;
+        } catch (\Exception $e) {
+            Mage::logException($e);
+            $result = false;
         }
-
-        $result = $this->_unlinkProductService->unlinkProduct($product->getData(Sarus_Sarus_Model_Product_Type::ATTRIBUTE_COURSE_UUID), $storeId);
-        if ($result) {
-            $this->_getSession()->addSuccess('Product has been successfully unlinked from Sarus.');
-        }
+        return $result;
     }
 }

@@ -3,7 +3,7 @@
 class Sarus_Sarus_ListController extends Mage_Core_Controller_Front_Action
 {
     /**
-     * @var Sarus_Sarus_Model_Config_General
+     * @var \Sarus_Sarus_Model_Config_General
      */
     protected $_configGeneral;
 
@@ -14,7 +14,7 @@ class Sarus_Sarus_ListController extends Mage_Core_Controller_Front_Action
     }
 
     /**
-     * @return Mage_Customer_Model_Session
+     * @return \Mage_Customer_Model_Session
      */
     protected function _getCustomerSession()
     {
@@ -45,7 +45,7 @@ class Sarus_Sarus_ListController extends Mage_Core_Controller_Front_Action
 
         $this->loadLayout();
 
-        /** @var Mage_Page_Block_Html_Head $headBlock */
+        /** @var \Mage_Page_Block_Html_Head $headBlock */
         $headBlock = $this->getLayout()->getBlock('head');
         if ($headBlock) {
             $headBlock->setTitle($this->__('My Courses'));

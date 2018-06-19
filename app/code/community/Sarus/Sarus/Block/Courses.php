@@ -3,31 +3,18 @@
 class Sarus_Sarus_Block_Courses extends Mage_Customer_Block_Account_Dashboard
 {
     /**
-     * @var Sarus_Sarus_Model_Config_General
+     * @var \Sarus_Sarus_Model_Platform
      */
-    protected $_configGeneral;
-
-    /**
-     * @var Sarus_Sarus_Model_Service_Courses
-     */
-    protected $_courseService;
-
-    /**
-     * @var Sarus_Sarus_Model_Service_Token
-     */
-    protected $_tokenService;
+    protected $_platform;
 
     public function _construct()
     {
-        $this->_configGeneral = Mage::getModel('sarus_sarus/config_general');
-        $this->_courseService = Mage::getModel('sarus_sarus/service_courses');
-        $this->_tokenService  = Mage::getModel('sarus_sarus/service_token');
-
+        $this->_platform = Mage::getModel('sarus_sarus/platform');
         return parent::_construct();
     }
 
     /**
-     * @return Mage_Customer_Model_Session
+     * @return \Mage_Customer_Model_Session
      */
     protected function _getCustomerSession()
     {
@@ -39,7 +26,8 @@ class Sarus_Sarus_Block_Courses extends Mage_Customer_Block_Account_Dashboard
      */
     public function getCustomerCourses()
     {
-        return $this->_courseService->getCourses($this->_getCustomerEmail());
+        $sarusResponse = $this->_platform->getSdk()->listEnrollments($this->_getCustomerEmail());
+        return (array)$sarusResponse->get('data') ?: [];
     }
 
     /**
@@ -47,6 +35,9 @@ class Sarus_Sarus_Block_Courses extends Mage_Customer_Block_Account_Dashboard
      */
     protected function _getCustomerEmail()
     {
+        if (!$this->_getCustomerSession()->isLoggedIn()) {
+            throw new \RuntimeException('Courses are not available for not logged in customers.');
+        }
         $customerEmail = $this->_getCustomerSession()->getCustomer()->getEmail();
         return $customerEmail;
     }

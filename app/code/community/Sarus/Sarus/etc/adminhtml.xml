@@ -4,7 +4,7 @@
         <report>
             <children>
                 <sarus_sarus translate="title">
-                    <title>Sarus Submissions</title>
+                    <title>Sarus Queue</title>
                     <action>adminhtml/sarus_submission/index</action>
                     <sort_order>999</sort_order>
                 </sarus_sarus>
@@ -18,7 +18,7 @@
                     <report>
                         <children>
                             <sarus_sarus translate="title">
-                                <title>Sarus Submission</title>
+                                <title>Sarus Queue</title>
                             </sarus_sarus>
                         </children>
                     </report>
@@ -29,9 +29,6 @@
                                     <sarus_sarus translate="title">
                                         <title>Sarus General</title>
                                     </sarus_sarus>
-                                    <!--<sarus_singlesignon translate="title">-->
-                                        <!--<title>Sarus Single Sign On</title>-->
-                                    <!--</sarus_singlesignon>-->
                                 </children>
                             </config>
                         </children>

@@ -2,13 +2,13 @@
 <layout>
     <adminhtml_sarus_submission_index>
         <reference name="content">
-            <block type="sarus_sarus/adminhtml_errorLog" name="sarus_sarus.log" />
+            <block type="sarus_sarus/adminhtml_queue" name="sarus_sarus.queue" />
         </reference>
     </adminhtml_sarus_submission_index>
 
     <adminhtml_sarus_submission_grid>
         <block type="core/text_list" name="root" output="toHtml">
-            <block type="sarus_sarus/adminhtml_errorLog_grid" name="sarus_sarus.log.grid"/>
+            <block type="sarus_sarus/adminhtml_queue_grid" name="sarus_sarus.queue.grid"/>
         </block>
     </adminhtml_sarus_submission_grid>
 </layout>

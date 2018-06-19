@@ -10,56 +10,45 @@ $this->startSetup();
  */
 $submissionQueueTable = $installer->getConnection()
     ->newTable($installer->getTable('sarus_sarus/sarus_submission'))
-    ->addColumn('entity_id', Varien_Db_Ddl_Table::TYPE_INTEGER, null, array(
+    ->addColumn('entity_id', Varien_Db_Ddl_Table::TYPE_INTEGER, null, [
         'identity'  => true,
         'unsigned'  => true,
         'nullable'  => false,
         'primary'   => true,
-    ), 'Id')
-    ->addColumn('store_id', Varien_Db_Ddl_Table::TYPE_INTEGER, null, array(
+    ], 'Id')
+    ->addColumn('store_id', Varien_Db_Ddl_Table::TYPE_INTEGER, null, [
         'unsigned' => true,
         'nullable' => false,
-    ), 'Store ID')
-    ->addColumn('api_method', Varien_Db_Ddl_Table::TYPE_VARCHAR, 4, array(
+    ], 'Store ID')
+    ->addColumn('request', Varien_Db_Ddl_Table::TYPE_TEXT, null, [
         'nullable'  => false,
-    ), 'API method used')
-    ->addColumn('api_endpoint', Varien_Db_Ddl_Table::TYPE_VARCHAR, 255, array(
-        'nullable'  => false,
-    ), 'API endpoint used')
-    ->addColumn('json', Varien_Db_Ddl_Table::TYPE_TEXT, null, array(
-        'nullable'  => false,
-    ), 'JSON Payload')
+    ], 'Serialized Request')
     ->addColumn('counter', Varien_Db_Ddl_Table::TYPE_INTEGER, null, array(
         'nullable'  => false,
         'default' => 0
-    ), 'Resubmission counter')
-    ->addColumn('submission_time', Varien_Db_Ddl_Table::TYPE_TIMESTAMP, null, array(
+    ), 'Counter')
+    ->addColumn('status', Varien_Db_Ddl_Table::TYPE_VARCHAR, 10, array(
         'nullable'  => false,
-        'default' => Varien_Db_Ddl_Table::TIMESTAMP_INIT_UPDATE
-    ), 'Time of submission to Sarus')
-    ->addColumn('success', Varien_Db_Ddl_Table::TYPE_BOOLEAN, null, array(
-        'nullable'  => false,
-        'default' => false
-    ), 'Was it successfully submitted?')
+        'default' => Sarus_Sarus_Model_Submission::STATUS_PENDING
+    ), 'Status')
     ->addColumn('error_message', Varien_Db_Ddl_Table::TYPE_TEXT, null, array(
         'nullable'  => false,
     ), 'Error message')
-    ->addIndex(
-        $installer->getIdxName($installer->getTable('sarus_sarus/sarus_submission'), array('store_id'), Varien_Db_Adapter_Interface::INDEX_TYPE_INDEX),
-        array('store_id'),
-        array('type' => Varien_Db_Adapter_Interface::INDEX_TYPE_INDEX)
+    ->addColumn('creating_time', Varien_Db_Ddl_Table::TYPE_TIMESTAMP, null, array(
+        'nullable'  => false,
+        'default' => Varien_Db_Ddl_Table::TIMESTAMP_INIT
+    ), 'Creating Time')
+    ->addColumn('submission_time', Varien_Db_Ddl_Table::TYPE_TIMESTAMP, null, array(
+        'nullable'  => true
+    ), 'Submission Time')
+    ->addForeignKey(
+        $installer->getFkName('sarus_sarus/sarus_submission', 'store_id', 'core_store', 'store_id'),
+        'store_id',
+        $installer->getTable('core_store'),
+        'store_id',
+        Varien_Db_Ddl_Table::ACTION_CASCADE
     )
-    ->addIndex(
-        $installer->getIdxName($installer->getTable('sarus_sarus/sarus_submission'), array('counter'), Varien_Db_Adapter_Interface::INDEX_TYPE_INDEX),
-        array('store_id'),
-        array('type' => Varien_Db_Adapter_Interface::INDEX_TYPE_INDEX)
-    )
-    ->addIndex(
-        $installer->getIdxName($installer->getTable('sarus_sarus/sarus_submission'), array('success'), Varien_Db_Adapter_Interface::INDEX_TYPE_INDEX),
-        array('success'),
-        array('type' => Varien_Db_Adapter_Interface::INDEX_TYPE_INDEX)
-    )
-    ->setComment('Sarus resubmission log table');
+    ->setComment('Sarus Submission Queue');
 $installer->getConnection()->createTable($submissionQueueTable);
 
 

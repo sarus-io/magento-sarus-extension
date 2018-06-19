@@ -62,15 +62,6 @@
                     <show_in_website>1</show_in_website>
                     <show_in_store>0</show_in_store>
                     <fields>
-                        <base_url translate="label comment">
-                            <label>API Base URL</label>
-                            <comment>Base URL for Sarus API. i.e. https://api.sarus.io</comment>
-                            <frontend_type>text</frontend_type>
-                            <sort_order>10</sort_order>
-                            <show_in_default>1</show_in_default>
-                            <show_in_website>1</show_in_website>
-                            <show_in_store>0</show_in_store>
-                        </base_url>
                         <auth_token translate="label">
                             <label>Authorization Token</label>
                             <comment><![CDATA[The Authorization Token for API access is supplied by Sarus.]]></comment>
@@ -83,7 +74,7 @@
                         </auth_token>
                         <debug translate="label">
                             <label>Debug Mode</label>
-                            <comment><![CDATA[Enabling this option will log all API requests to a log file named sarus_api_status.log.]]></comment>
+                            <comment><![CDATA[Enabling this option will log all API requests to a log file named sarus/api-{Y-m}.log.]]></comment>
                             <frontend_type>select</frontend_type>
                             <source_model>adminhtml/system_config_source_yesno</source_model>
                             <sort_order>30</sort_order>

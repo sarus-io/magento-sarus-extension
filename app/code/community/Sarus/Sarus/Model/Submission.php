@@ -1,45 +1,50 @@
 <?php
 
+use Sarus\Request\CustomRequest as SarusCustomRequest;
+
 /**
  * @method int getStoreId()
- * @method $this setStoreId(int $storeId)
- * @method string getApiMethod()
- * @method $this setApiMethod(string $apiMethod)
- * @method string getApiEndpoint()
- * @method $this setApiEndpoint(string $apiEndpoint)
- * @method string getJson()
- * @method $this setJson(string $json)
+ * @method $this setStoreId($storeId)
+ * @method string getRequest()
+ * @method $this setRequest($request)
  * @method int getCounter()
- * @method $this setCounter(int $counter)
- * @method int getSubmissionTime()
- * @method $this setSubmissionTime(string $submissionTime)
- * @method bool getSuccess()
- * @method $this setSuccess(bool $success)
+ * @method $this setCounter($counter)
+ * @method string getStatus()
+ * @method $this setStatus($status)
  * @method string getErrorMessage()
- * @method $this setErrorMessage(string $errorMessage)
+ * @method $this setErrorMessage($errorMessage)
+ * @method string getCreatingTime()
+ * @method $this setCreatingTime($creatingTime)
+ * @method string getSubmissionTime()
+ * @method $this setSubmissionTime($submissionTime)
  */
 class Sarus_Sarus_Model_Submission extends Mage_Core_Model_Abstract
 {
+    const STATUS_PENDING = 'pending';
+    const STATUS_DONE = 'done';
+    const STATUS_FAIL = 'fail';
+
     protected function _construct()
     {
         $this->_init('sarus_sarus/submission');
     }
 
     /**
-     * @param array $data
+     * @param \Sarus\Request $sarusRequest
      * @return $this
      */
-    public function importData(array $data)
+    public function importRequest(\Sarus\Request $sarusRequest)
     {
-        $this->setJson(json_encode($data));
+        $this->setRequest(json_encode($sarusRequest));
         return $this;
     }
 
     /**
-     * @return array
+     * @return \Sarus\Request
      */
-    public function exportData()
+    public function exportRequest()
     {
-        return (array)json_decode($this->getJson(), 1);
+        $sarusRequestData = (array)json_decode($this->getRequest(), 1);
+        return SarusCustomRequest::fromArray($sarusRequestData);
     }
 }

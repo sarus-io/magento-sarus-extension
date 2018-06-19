@@ -16,28 +16,6 @@ class Sarus_Sarus_Helper_Order
      * @param Mage_Sales_Model_Order $order
      * @return array
      */
-    public function getSarusProductIds($order)
-    {
-        $sarusProductIds = [];
-
-        /** @var Mage_Sales_Model_Order_Item $item */
-        foreach ($order->getAllItems() as $item) {
-            $product = $item->getProduct();
-            if ($product->isComposite()) {
-                continue;
-            }
-            if ($this->_productHelper->isSarus($product)) {
-                $sarusProductIds[] = $product->getId();
-            }
-        }
-
-        return $sarusProductIds;
-    }
-
-    /**
-     * @param Mage_Sales_Model_Order $order
-     * @return array
-     */
     public function getSarusProductUuids($order)
     {
         $uuids = [];

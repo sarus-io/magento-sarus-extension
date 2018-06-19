@@ -18,27 +18,7 @@
             </action>
         </reference>
         <reference name="content">
-            <block type="sarus_sarus/courses" name="sarus.courselist" template="sarus/sarus/courses.phtml"/>
+            <block type="sarus_sarus/courses" name="sarus.course_list" template="sarus/sarus/courses.phtml"/>
         </reference>
     </sarus_sarus_list_index>
-
-    <PRODUCT_TYPE_sarus translate="label" module="sarus_product">
-        <label>Catalog Product View (Sarus)</label>
-
-        <reference name="root">
-            <action method="addBodyClass"><classname>catalog-product-sarus</classname></action>
-        </reference>
-
-        <reference name="product.info">
-            <block type="sarus_sarus/product_view_type" name="product.info.sarus" as="product_type_data" template="sarus/sarus/catalog/product/view/type/default.phtml">
-                <block type="core/text_list" name="product.info.sarus.extra" as="product_type_data_extra" translate="label">
-                    <label>Product Extra Info</label>
-                </block>
-            </block>
-        </reference>
-
-        <reference name="product.info.addtocart">
-            <action method="setTemplate"><template>sarus/sarus/catalog/product/view/addtocart.phtml</template></action>
-        </reference>
-    </PRODUCT_TYPE_sarus>
 </layout>

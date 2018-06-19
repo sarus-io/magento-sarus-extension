@@ -2,11 +2,11 @@
 
 class Sarus_Sarus_Model_Config_Api
 {
-    const XML_PATH_BASE_URL = 'sarus_sarus/api/base_url';
-
     const XML_PATH_AUTH_TOKEN = 'sarus_sarus/api/auth_token';
 
     const XML_PATH_DEBUG = 'sarus_sarus/api/debug';
+
+    const XML_PATH_LOG_FILENAME = 'sarus_sarus/api/log_filename';
 
     const XML_PATH_NOTIFICATION_RECIPIENT = 'sarus_sarus/api/notification_recipient';
 
@@ -16,18 +16,44 @@ class Sarus_Sarus_Model_Config_Api
      * @param int|string|null $storeId
      * @return string
      */
-    public function getBaseUrl($storeId = null)
+    public function getAuthToken($storeId = null)
     {
-        return rtrim(Mage::getStoreConfig(self::XML_PATH_BASE_URL, $storeId), '/');
+        return Mage::getStoreConfig(self::XML_PATH_AUTH_TOKEN, $storeId);
+    }
+
+    /**
+     * @param int $storeId
+     * @return int
+     */
+    public function getMaxTimeResend($storeId = null)
+    {
+        return (int)Mage::getStoreConfig(self::XML_PATH_MAX_TIME_RESEND, $storeId);
     }
 
     /**
      * @param int|string|null $storeId
+     * @return array
+     */
+    public function getNotificationRecipients($storeId = null)
+    {
+        $recipients = Mage::getStoreConfig(self::XML_PATH_NOTIFICATION_RECIPIENT, $storeId);
+        return !empty($recipients) ? explode(',', $recipients) : [];
+    }
+
+    /**
      * @return string
      */
-    public function getAuthToken($storeId = null)
+    public function getNotificationSenderEmail()
     {
-        return Mage::getStoreConfig(self::XML_PATH_AUTH_TOKEN, $storeId);
+        return Mage::getStoreConfig('trans_email/ident_support/email');
+    }
+
+    /**
+     * @return string
+     */
+    public function getNotificationSenderName()
+    {
+        return Mage::getStoreConfig('trans_email/ident_support/name');
     }
 
     /**
@@ -40,21 +66,11 @@ class Sarus_Sarus_Model_Config_Api
     }
 
     /**
-     * @param int|string|null $storeId
-     * @return array
+     * @return string
      */
-    public function getNotificationRecipients($storeId = null)
+    public function getLogFilename()
     {
-        $recipients = Mage::getStoreConfigFlag(self::XML_PATH_NOTIFICATION_RECIPIENT, $storeId);
-        return !empty($recipients) ? explode(',', $recipients) : array();
-    }
-
-    /**
-     * @param int $storeId
-     * @return int
-     */
-    public function getMaxTimeResend($storeId = null)
-    {
-        return (int)Mage::getStoreConfig(self::XML_PATH_MAX_TIME_RESEND, $storeId);
+        $fileName = Mage::getStoreConfig(self::XML_PATH_LOG_FILENAME);
+        return Mage::getBaseDir('var') . DIRECTORY_SEPARATOR . ltrim($fileName, DIRECTORY_SEPARATOR);
     }
 }

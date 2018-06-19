@@ -3,12 +3,12 @@
 class Sarus_Sarus_Model_Observer_Checkout_AllowGuest
 {
     /**
-     * @var Sarus_Sarus_Model_Config_General
+     * @var \Sarus_Sarus_Model_Config_General
      */
     protected $_configGeneral;
 
     /**
-     * @var Sarus_Sarus_Helper_Quote
+     * @var \Sarus_Sarus_Helper_Quote
      */
     protected $_quoteHelper;
 
@@ -19,12 +19,12 @@ class Sarus_Sarus_Model_Observer_Checkout_AllowGuest
     }
 
     /**
-     * @param Varien_Event_Observer $observer
+     * @param \Varien_Event_Observer $observer
      * @return void
      */
     public function execute(Varien_Event_Observer $observer)
     {
-        /** @var Mage_Sales_Model_Quote $quote */
+        /** @var \Mage_Sales_Model_Quote $quote */
         $quote  = $observer->getData('quote');
 
         $result = $observer->getData('result');

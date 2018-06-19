@@ -1,6 +1,6 @@
 <?php
 
-class Sarus_Sarus_Block_Adminhtml_ErrorLog extends Mage_Adminhtml_Block_Widget_Grid_Container
+class Sarus_Sarus_Block_Adminhtml_Queue extends Mage_Adminhtml_Block_Widget_Grid_Container
 {
     /**
      * @return void
@@ -8,8 +8,8 @@ class Sarus_Sarus_Block_Adminhtml_ErrorLog extends Mage_Adminhtml_Block_Widget_G
     public function _construct()
     {
         $this->_blockGroup = 'sarus_sarus';
-        $this->_controller = 'adminhtml_errorLog';
-        $this->_headerText = $this->__('Sarus Failed Submission');
+        $this->_controller = 'adminhtml_queue';
+        $this->_headerText = $this->__('Sarus Queue');
         parent::_construct();
     }
 

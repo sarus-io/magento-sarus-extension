@@ -3,18 +3,24 @@
 class Sarus_Sarus_Adminhtml_Sarus_SubmissionController extends Mage_Adminhtml_Controller_Action
 {
     /**
-     * @var Sarus_Sarus_Model_Submission_Manager
+     * @var \Sarus_Sarus_Model_Queue
      */
-    protected $_submissionManager;
+    protected $_queue;
+
+    /**
+     * @var \Sarus_Sarus_Model_QueueManager
+     */
+    protected $_queueManager;
 
     protected function _construct()
     {
-        $this->_submissionManager = Mage::getModel('sarus_sarus/submission_manager');
+        $this->_queue = Mage::getModel('sarus_sarus/queue');
+        $this->_queueManager = Mage::getModel('sarus_sarus/queueManager');
         parent::_construct();
     }
 
     /**
-     * @return Mage_Admin_Model_Session
+     * @return \Mage_Admin_Model_Session
      */
     protected function _getAdminSession()
     {
@@ -31,7 +37,7 @@ class Sarus_Sarus_Adminhtml_Sarus_SubmissionController extends Mage_Adminhtml_Co
 
     public function indexAction()
     {
-        $this->_title($this->__('Sarus Submissions'));
+        $this->_title($this->__('Sarus Queue'));
 
         $this->loadLayout();
         $this->renderLayout();
@@ -51,13 +57,13 @@ class Sarus_Sarus_Adminhtml_Sarus_SubmissionController extends Mage_Adminhtml_Co
             if (empty($submissionIds)) {
                 Mage::throwException($this->__('Please select Error Log(s).'));
             }
-            $processedSubmissions = $this->_submissionManager->resendByIds($submissionIds);
-            $this->_getSession()->addSuccess($this->__('%s submission(s) were processed.', $processedSubmissions));
+            $processedSubmissions = $this->_queueManager->sendByIds($submissionIds);
+            $this->_getSession()->addSuccess($this->__('%s submission(s) were sent successfully.', $processedSubmissions));
         } catch (Mage_Core_Exception $e) {
             $this->_getSession()->addError($e->getMessage());
         } catch (Exception $e) {
             Mage::logException($e);
-            $this->_getSession()->addException($e, $this->__('An error occurred while resending submissions.'));
+            $this->_getSession()->addException($e, $this->__('An error occurred while sending submissions.'));
         }
 
         $this->_redirect('*/*/index');
@@ -65,28 +71,19 @@ class Sarus_Sarus_Adminhtml_Sarus_SubmissionController extends Mage_Adminhtml_Co
 
     public function massDeleteAction()
     {
-        $ids = $this->getRequest()->getParam('ids');
+        $submissionIds = $this->getRequest()->getParam('ids');
 
         try {
-            if (empty($ids)) {
+            if (empty($submissionIds)) {
                 Mage::throwException($this->__('Please select Error Log(s).'));
             }
 
-            /** @var Sarus_Sarus_Model_Submission $submission */
-            $submission = Mage::getModel('sarus_sarus/submission');
-
-            foreach ($ids as $id) {
-                $submission->load($id);
-                $submission->delete();
-            }
-
-            $this->_getSession()->addSuccess($this->__('Total of %d record(s) have been deleted.', count($ids)));
+            $this->_queue->deleteByIds($submissionIds);
+            $this->_getSession()->addSuccess($this->__('Submission(s) were deleted successfully.'));
         } catch (Mage_Core_Exception $e) {
             $this->_getSession()->addError($e->getMessage());
         } catch (Exception $e) {
-            $this->_getSession()->addError(
-                $this->__('An error occurred while mass deleting items. Please review log and try again.')
-            );
+            $this->_getSession()->addError($this->__('An error occurred while deleting submissions.'));
             Mage::logException($e);
         }
 
@@ -104,10 +101,10 @@ class Sarus_Sarus_Adminhtml_Sarus_SubmissionController extends Mage_Adminhtml_Co
     }
 
     /**
-     * @return Sarus_Sarus_Block_Adminhtml_ErrorLog_Grid
+     * @return Sarus_Sarus_Block_Adminhtml_Queue_Grid
      */
     protected function _createGridBlock()
     {
-        return $this->getLayout()->createBlock('sarus_sarus/adminhtml_errorLog_grid');
+        return $this->getLayout()->createBlock('sarus_sarus/adminhtml_queue_grid');
     }
 }

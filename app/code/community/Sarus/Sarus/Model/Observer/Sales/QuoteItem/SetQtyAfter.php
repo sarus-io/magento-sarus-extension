@@ -3,12 +3,12 @@
 class Sarus_Sarus_Model_Observer_Sales_QuoteItem_SetQtyAfter
 {
     /**
-     * @var Sarus_Sarus_Model_Config_General
+     * @var \Sarus_Sarus_Model_Config_General
      */
     protected $_configGeneral;
 
     /**
-     * @var Sarus_Sarus_Helper_Quote
+     * @var \Sarus_Sarus_Helper_Quote
      */
     protected $_quoteHelper;
 
@@ -21,12 +21,12 @@ class Sarus_Sarus_Model_Observer_Sales_QuoteItem_SetQtyAfter
     /**
      * Make sure the sarus product quantity is 1
      *
-     * @param Varien_Event_Observer $observer
+     * @param \Varien_Event_Observer $observer
      * @return void
      */
     public function execute($observer)
     {
-        /** @var Mage_Sales_Model_Quote_Item $quoteItem */
+        /** @var \Mage_Sales_Model_Quote_Item $quoteItem */
         $quoteItem = $observer->getData('item');
 
         if (!$this->_configGeneral->isEnabled($quoteItem->getStoreId())) {
@@ -34,7 +34,6 @@ class Sarus_Sarus_Model_Observer_Sales_QuoteItem_SetQtyAfter
         }
 
         if ($this->_quoteHelper->hasQuoteItemSarusProduct($quoteItem)) {
-            // TODO add message to user if they try to add more then 1 Sarus Prod.
             $quoteItem->setData('qty', 1);
         }
     }
