@@ -80,6 +80,17 @@
             </updates>
         </layout>
     </frontend>
+    <admin>
+        <routers>
+            <adminhtml>
+                <args>
+                    <modules>
+                        <Buzzi_Base before="Mage_Adminhtml">Sarus_SsoIdp_Adminhtml</Buzzi_Base>
+                    </modules>
+                </args>
+            </adminhtml>
+        </routers>
+    </admin>
     <default>
         <sarus_ssoidp>
             <general>

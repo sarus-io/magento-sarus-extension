@@ -1,0 +1,51 @@
+<?php
+/** @var Sarus_SsoIdp_Block_Adminhtml_Config_GenerateCertificate $this */
+
+echo $this->getButtonHtml();
+?>
+<span id="generate-certificate-result" class="message-generate-certificate" style="padding-left: 10px; position: absolute; font-weight: bold;"></span>
+
+<script type="text/javascript">
+    //<![CDATA[
+    function generateCertificates() {
+
+        var resultMessageBox = $('generate-certificate-result');
+
+        resultMessageBox
+            .removeClassName('success')
+            .removeClassName('fail')
+            .setStyle({'color': ''})
+            .update('');
+
+        var defaultMessage = '<?php echo $this->__('An error occurred while request.') ?>';
+
+        new Ajax.Request('<?php echo $this->getAjaxUrl() ?>', {
+            method: 'post',
+            parameters: {
+                website: '<?php echo $this->getWebsiteCode() ?>'
+            },
+            onSuccess: function(transport) {
+                var response = transport.responseJSON || {};
+                var status = response.status || 'fail';
+                var message = response.message || defaultMessage;
+
+                resultMessageBox
+                    .addClassName(status)
+                    .setStyle({'color': (response.status === 'success' ? 'green' : 'red')})
+                    .update(message);
+
+                if (response.status === 'success') {
+                    $('sarus_ssoidp_credentials_private_key').setValue(response.private_key);
+                    $('sarus_ssoidp_credentials_cert').setValue(response.certificate);
+                }
+            },
+            onFailure: function() {
+                resultMessageBox
+                    .addClassName('fail')
+                    .setStyle({'color': 'red'})
+                    .update(defaultMessage);
+            }
+        });
+    }
+    //]]>
+</script>

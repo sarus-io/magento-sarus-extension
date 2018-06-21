@@ -98,6 +98,21 @@
                             <show_in_website>1</show_in_website>
                             <show_in_store>0</show_in_store>
                         </cert>
+                        <generate_certificate translate="label">
+                            <frontend_type>button</frontend_type>
+                            <frontend_model>sarus_ssoidp/adminhtml_config_generateCertificate</frontend_model>
+                            <comment><![CDATA[Required information is taken from General > Store Information section and Customer Support email.]]></comment>
+                            <sort_order>100</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>0</show_in_store>
+                            <depends>
+                                <enabled>
+                                    <fieldset>general</fieldset>
+                                    <value>1</value>
+                                </enabled>
+                            </depends>
+                        </generate_certificate>
                     </fields>
                 </credentials>
 
