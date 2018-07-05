@@ -3,6 +3,8 @@
 ?>
 <div class="login-form">
 
+    <h1><?php echo $this->__('Login Form') ?></h1>
+
     <?php echo $this->getMessagesBlock()->toHtml() ?>
 
     <form action="<?php echo $this->getUrl('*/*/loginPost', ['_secure' => true]) ?>" method="post">
@@ -25,7 +27,7 @@
         <?php endif; ?>
 
         <div>
-            <button type="submit" class="btn btn-primary"><?php echo $this->__('Sign In') ?></button>
+            <button type="submit" class="btn button btn-primary"><?php echo $this->__('Sign In') ?></button>
         </div>
     </form>
 </div>
@@ -39,10 +41,6 @@ html,
 body {
 	height: 100%;
 	background-color: #e7e7e7;
-}
-
-body {
-#	background: url('/skin/frontend/swarming/default/images/swirl-pattern-dark.jpg') repeat-x;
 }
 
 .login-form {
