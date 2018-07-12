@@ -1,0 +1,13 @@
+<?php
+
+/** @var $this Sarus_Sarus_Block_Checkout_Success */
+
+$sarusSuccessBlockHtml = $this->getSarusStaticBlockHtml();
+?>
+<?php if ($sarusSuccessBlockHtml): ?>
+    <?php echo $sarusSuccessBlockHtml ?>
+<?php elseif ($this->isMyCoursesEnabled()): ?>
+    <div><?php echo $this->__('Click here to view <a href="%s">My Courses</a>', $this->getSarusProductsUrl()) ?></div>
+<?php endif; ?>
+
+

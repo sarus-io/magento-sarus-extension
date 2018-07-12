@@ -21,4 +21,10 @@
             <block type="sarus_sarus/courses" name="sarus.course_list" template="sarus/sarus/courses.phtml"/>
         </reference>
     </sarus_sarus_list_index>
+
+    <checkout_onepage_success>
+        <reference name="checkout.success">
+            <block type="sarus_sarus/checkout_success" name="sarus.checkout_success" template="sarus/sarus/checkout/success.phtml"/>
+        </reference>
+    </checkout_onepage_success>
 </layout>
