@@ -1,5 +1,5 @@
 {
-  "name": "sarus/magento-sarus",
+  "name": "sarus-io/magento-sarus",
   "description": "Magento 1 extensions",
   "license": "proprietary",
   "authors": [
@@ -9,7 +9,7 @@
     }
   ],
   "require": {
-    "sarus/sarus-sdk-php": "^1.2",
+    "sarus-io/sarus-sdk-php": "^1.2",
     "lightsaml/lightsaml": "^1.4",
     "monolog/monolog": "^1.0"
   }
