@@ -15,7 +15,9 @@ $customerCourses = $this->getCustomerCourses();
                 <img src="<?php echo $this->getCourseImageUrl($courseData) ?>" />
 
                 <?php if (!empty($courseData['description'])): ?>
-                    <p class="sarus-course-description"><?php echo $courseData['description'] ?></p>
+                    <div class="sarus-course-description">
+                        <p><?php echo $courseData['description'] ?></p>
+                    </div>
                 <?php endif; ?>
 
                 <?php if (!empty($courseData['url'])): ?>
