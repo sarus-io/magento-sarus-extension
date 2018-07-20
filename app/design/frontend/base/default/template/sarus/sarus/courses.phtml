@@ -4,7 +4,7 @@
 
 $customerCourses = $this->getCustomerCourses();
 ?>
-<ul>
+<ul class="sarus-course-listing">
     <?php if (empty($customerCourses)): ?>
         <li><?php echo $this->__('No courses available.') ?></li>
     <?php else: ?>
@@ -15,12 +15,12 @@ $customerCourses = $this->getCustomerCourses();
                 <img src="<?php echo $this->getCourseImageUrl($courseData) ?>" />
 
                 <?php if (!empty($courseData['description'])): ?>
-                    <p><?php echo $courseData['description'] ?></p>
+                    <p class="sarus-course-description"><?php echo $courseData['description'] ?></p>
                 <?php endif; ?>
 
                 <?php if (!empty($courseData['url'])): ?>
-                    <div>
-                        <a class="btn" target="_blank" href="<?php echo $courseData['url'] ?>"><?php echo $this->__('Go to Course!') ?></a>
+                    <div class="sarus-course-action">
+                        <a class="btn" target="_blank" href="<?php echo $courseData['url'] ?>"><?php echo $this->__('Launch Course &raquo;') ?></a>
                     </div>
                 <?php endif; ?>
             </li>
@@ -33,50 +33,84 @@ $customerCourses = $this->getCustomerCourses();
     </p>
 </div>
 
-<!-- TODO Update css classes and styling -->
+<!-- Sarus course listing CSS -->
 <style>
-    .my-account .item {
+    .sarus-course-listing {
+        width: 100%;
+    }
+
+    .sarus-course-listing li {
         text-align: center;
         margin-bottom: 1em;
+        padding: 0 1em;
+        background-color: #f1f1f1;
+        overflow: auto;
+        margin-right: 10px;
+        float: left;
+        display: block;
     }
-    .my-account .item h3 {
+    .sarus-course-listing li h4 {
         font-size: 20px;
         font-weight: 400;
         min-height: 2.1em;
     }
-    .my-account .item img {
+    .sarus-course-listing li img {
         margin: 0 auto;
+        max-width: 100%;
+        max-height: 200px;
     }
-    .my-account .item a {
+    .sarus-course-listing li .sarus-course-description {
+        max-height: 200px;
+        overflow: scroll;
+        display: none;
+    }
+    .sarus-course-listing li a {
         display: inline-block;
         text-decoration: none;
         margin: 1em 0;
     }
-    .my-account .item .alert-archived {
+    .sarus-sarus-list-index div.buttons-set {
+        clear: left;
+    }
+    .sarus-course-listing li .alert-archived {
         margin: 30px 0 0;
     }
-    .my-account .item .alert-archived a {
+    .sarus-course-listing li .alert-archived a {
         margin: 0;
     }
-    .my-account .item-inner {
-        padding: 0 1em;
-        background-color: #f1f1f1;
-        overflow: auto;
+    .sarus-course-listing .btn {
+        margin-top: 10px;
+        background-color: #666;
+        color: white;
+    }
+    .sarus-course-listing .btn:hover {
+        margin-top: 10px;
+        background-color: #888;
+        color: white;
     }
 
-    @media (min-width: 768px) {
-        .my-account .item-inner {
+    @media (max-width: 767px) {
+        .sarus-course-listing li {
             min-height: 27em;
+            min-width: 100%;
+        }
+    }
+    @media (min-width: 768px) {
+        .sarus-course-listing li {
+            min-height: 27em;
+            min-width: 48%;
         }
     }
     @media (min-width: 992px) {
-        .my-account .item-inner {
+        .sarus-course-listing li {
             min-height: 26em;
+            min-width: 30%;
         }
     }
     @media (min-width: 1260px) {
-        .my-account .item-inner {
+        .sarus-course-listing li {
             min-height: 23em;
+            min-width: 22%;
         }
     }
 </style>
