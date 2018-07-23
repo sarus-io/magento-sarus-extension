@@ -173,6 +173,15 @@
                 </sarus_buzzi>
             </updates>
         </layout>
+        <sales>
+            <order>
+                <create>
+                    <available_product_types>
+                        <sarus/>
+                    </available_product_types>
+                </create>
+            </order>
+        </sales>
     </adminhtml>
     <admin>
         <routers>
