@@ -9,6 +9,11 @@ $productEntityType = $productResource->getEntityType();
 
 /** @var Mage_Eav_Model_Entity_Attribute_Set $attributeSet */
 $attributeSet = Mage::getModel('eav/entity_attribute_set');
+$attributeSet->load(Sarus_Sarus_Model_Product_Type::ATTRIBUTE_SET_NAME, 'attribute_set_name');
+if ($attributeSet->getId()) {
+    return;
+}
+
 $attributeSet->setEntityTypeId($productEntityType->getId());
 $attributeSet->setAttributeSetName(Sarus_Sarus_Model_Product_Type::ATTRIBUTE_SET_NAME);
 $attributeSet->validate();
