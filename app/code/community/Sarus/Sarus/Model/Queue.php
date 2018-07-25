@@ -45,7 +45,18 @@ class Sarus_Sarus_Model_Queue
     /**
      * @param \Sarus\Request $sarusRequest
      * @param int $storeId
-     * @return void
+     * @return bool
+     */
+    public function sendRequest(\Sarus\Request $sarusRequest, $storeId)
+    {
+        $submissionRecord = $this->addRequest($sarusRequest, $storeId);
+        return $this->_sendSubmission($submissionRecord);
+    }
+
+    /**
+     * @param \Sarus\Request $sarusRequest
+     * @param int $storeId
+     * @return \Sarus_Sarus_Model_Submission
      */
     public function addRequest(\Sarus\Request $sarusRequest, $storeId)
     {
@@ -57,6 +68,7 @@ class Sarus_Sarus_Model_Queue
         $submissionRecord->setStatus(Sarus_Sarus_Model_Submission::STATUS_PENDING);
 
         $submissionRecord->save();
+        return $submissionRecord;
     }
 
     /**
@@ -68,7 +80,7 @@ class Sarus_Sarus_Model_Queue
         $counter = 0;
         /** @var \Sarus_Sarus_Model_Submission $submissionRecord */
         foreach ($submissionCollection as $submissionRecord) {
-            $counter += $this->_processSubmissionRecord($submissionRecord) ? 1 : 0;
+            $counter += $this->_sendSubmission($submissionRecord) ? 1 : 0;
         }
 
         return $counter;
@@ -78,7 +90,7 @@ class Sarus_Sarus_Model_Queue
      * @param \Sarus_Sarus_Model_Submission $submissionRecord
      * @return bool
      */
-    protected function _processSubmissionRecord($submissionRecord)
+    protected function _sendSubmission($submissionRecord)
     {
         $storeId = $submissionRecord->getStoreId();
 

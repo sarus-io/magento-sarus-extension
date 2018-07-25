@@ -44,6 +44,6 @@ class Sarus_Sarus_Model_Observer_Sales_Order_Refund
         }
 
         $sarusRequest = new SarusDeactivate($creditmemo->getOrder()->getCustomerEmail(), $sarusProductUuids);
-        $this->_queue->addRequest($sarusRequest, $creditmemo->getStoreId());
+        $this->_queue->sendRequest($sarusRequest, $creditmemo->getStoreId());
     }
 }

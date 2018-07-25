@@ -47,7 +47,7 @@ class Sarus_Sarus_Model_Observer_Sales_Order_PlaceAfter
 
         $sarusRequest = new SarusPurchase($sarusProductUuids, $this->_createSarusUser($order));
 
-        $this->_queue->addRequest($sarusRequest, $order->getStoreId());
+        $this->_queue->sendRequest($sarusRequest, $order->getStoreId());
     }
 
     /**
