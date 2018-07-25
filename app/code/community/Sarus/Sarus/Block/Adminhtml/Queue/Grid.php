@@ -81,7 +81,7 @@ class Sarus_Sarus_Block_Adminhtml_Queue_Grid extends Mage_Adminhtml_Block_Widget
                 'options' => [
                     Sarus_Sarus_Model_Submission::STATUS_PENDING => $this->__('Pending'),
                     Sarus_Sarus_Model_Submission::STATUS_DONE => $this->__('Done'),
-                    Sarus_Sarus_Model_Submission::STATUS_FAIL => $this->__('Fain')
+                    Sarus_Sarus_Model_Submission::STATUS_FAIL => $this->__('Fail')
                 ]
             ]
         );
