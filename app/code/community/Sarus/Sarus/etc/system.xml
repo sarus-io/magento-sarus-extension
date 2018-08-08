@@ -62,6 +62,13 @@
                     <show_in_website>1</show_in_website>
                     <show_in_store>0</show_in_store>
                     <fields>
+                        <base_uri translate="label">
+                            <label>Base Uri</label>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </base_uri>
                         <auth_token translate="label">
                             <label>Authorization Token</label>
                             <comment><![CDATA[The Authorization Token for API access is supplied by Sarus.]]></comment>

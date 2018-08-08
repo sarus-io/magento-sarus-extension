@@ -2,6 +2,8 @@
 
 class Sarus_Sarus_Model_Config_Api
 {
+    const XML_PATH_BASE_URI = 'sarus_sarus/api/base_uri';
+
     const XML_PATH_AUTH_TOKEN = 'sarus_sarus/api/auth_token';
 
     const XML_PATH_DEBUG = 'sarus_sarus/api/debug';
@@ -11,6 +13,15 @@ class Sarus_Sarus_Model_Config_Api
     const XML_PATH_NOTIFICATION_RECIPIENT = 'sarus_sarus/api/notification_recipient';
 
     const XML_PATH_MAX_TIME_RESEND = 'sarus_sarus/api/max_time_resend';
+
+    /**
+     * @param int|string|null $storeId
+     * @return string
+     */
+    public function getBaseUri($storeId = null)
+    {
+        return Mage::getStoreConfig(self::XML_PATH_BASE_URI, $storeId);
+    }
 
     /**
      * @param int|string|null $storeId
